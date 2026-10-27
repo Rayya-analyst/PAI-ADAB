@@ -1,52 +1,94 @@
 /* ==========================================================================
    ADAB SIBER: ISLAMIC DIGITAL ADAB PROTOCOL
-   Aesthetic: Neo-Brutalist Modern Islamic Engine
-   Zero Emoji Policy - Pure SVG & Vector UI
+   Aesthetic: Luxury Islamic Editorial & Architectural Heritage
+   Inspired by Royal Umrah/Hajj Portals (Warm Sand, Deep Mocha, Gold & Arabesque)
+   STRICT POLICY: ZERO UNICODE EMOJIS (Pure SVG & Vector Islamic Motifs Only)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & ISLAMIC COLOR PALETTE
+   -------------------------------------------------------------------------- */
 :root {
-  --bg-primary: #F5F3EF;
+  /* Warm Islamic Backgrounds & Canvas */
+  --bg-canvas: #F8F5EE;
   --bg-surface: #FFFFFF;
-  --bg-surface-alt: #EBE7DF;
-  --text-main: #121614;
-  --text-muted: #525E56;
-  --text-dim: #7A887F;
-  
-  --islamic-emerald: #0A5C36;
-  --islamic-mint: #00E575;
-  --islamic-mint-hover: #00C864;
-  --islamic-mint-soft: rgba(0, 229, 117, 0.15);
-  --islamic-gold: #D4AF37;
-  --islamic-gold-soft: rgba(212, 175, 55, 0.15);
-  
-  --danger: #E63946;
-  --danger-soft: rgba(230, 57, 70, 0.12);
-  --warning: #F4A261;
-  --info: #2A9D8F;
-  
-  --border-thick: 2px solid #121614;
-  --border-heavy: 3px solid #121614;
-  --shadow-brutal: 4px 4px 0px #121614;
-  --shadow-brutal-sm: 2px 2px 0px #121614;
-  --shadow-brutal-lg: 6px 6px 0px #121614;
-  --shadow-brutal-hover: 1px 1px 0px #121614;
-  
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --bg-surface-warm: #FAF6F0;
+  --bg-surface-cream: #F3ECE0;
+  --bg-parchment: #FDFBF7;
+  --bg-parchment-alt: #F6EFE3;
+
+  /* Rich Islamic Bronze, Espresso & Mocha */
+  --c-espresso-dark: #22140A;
+  --c-espresso: #2D1B0F;
+  --c-espresso-mid: #452C1A;
+  --c-mocha: #5E3D23;
+  --c-sandalwood: #8C6239;
+  --c-sandalwood-light: #A77747;
+  --c-sand-subtle: #E8DDCD;
+
+  /* Royal Islamic Gold */
+  --c-gold: #C5A059;
+  --c-gold-light: #DFBE7B;
+  --c-gold-bright: #F5D38A;
+  --c-gold-deep: #A07830;
+  --c-gold-glow: rgba(197, 160, 89, 0.35);
+  --c-gold-soft: rgba(197, 160, 89, 0.12);
+  --c-gold-border: rgba(197, 160, 89, 0.45);
+
+  /* Syariat Green / Islamic Emerald */
+  --c-emerald: #1B5E43;
+  --c-emerald-light: #2A835E;
+  --c-emerald-soft: #EBF5F0;
+  --c-emerald-border: #A3D4BF;
+
+  /* Fiqih Ruby / Warning Red */
+  --c-ruby: #8E2325;
+  --c-ruby-light: #B83235;
+  --c-ruby-soft: #FCEAEA;
+  --c-ruby-border: #E8AAAA;
+
+  /* Typography Colors */
+  --text-main: #2A1B10;
+  --text-heading: #1F130B;
+  --text-muted: #6B5747;
+  --text-dim: #9C8877;
+  --text-gold: #A67C2E;
+
+  /* Borders & Hairlines */
+  --border-delicate: 1px solid rgba(197, 160, 89, 0.3);
+  --border-gold: 1.5px solid var(--c-gold);
+  --border-cream: 1.5px solid #E5D7C3;
+  --border-thick: 2px solid #3D2718;
+
+  /* Soft Luxury Shadows */
+  --shadow-sm: 0 4px 12px rgba(45, 27, 15, 0.05);
+  --shadow-card: 0 10px 30px -4px rgba(45, 27, 15, 0.08), 0 2px 8px rgba(45, 27, 15, 0.04);
+  --shadow-elevated: 0 18px 45px -8px rgba(45, 27, 15, 0.14), 0 4px 16px rgba(45, 27, 15, 0.06);
+  --shadow-gold: 0 8px 24px rgba(197, 160, 89, 0.28);
+  --shadow-dark-card: 0 16px 40px rgba(15, 9, 5, 0.35);
+
+  /* Rounded Corner Metrics */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
   --radius-pill: 9999px;
-  
+
+  /* Font Families */
+  --font-display: 'Cinzel', serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-arabic: 'Amiri', serif;
+  --font-arabic: 'Scheherazade New', 'Amiri', serif;
   --font-mono: 'Space Mono', monospace;
-  
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Smooth Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Reset & Base Setup */
+/* --------------------------------------------------------------------------
+   2. RESET & BASE BODY SETUP
+   -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -55,34 +97,32 @@
 
 html, body {
   width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  background-color: var(--bg-primary);
+  min-height: 100%;
+  background-color: var(--bg-canvas);
   color: var(--text-main);
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Islamic Geometric Background Pattern */
+/* Authentic Seamless Islamic 8-Point Star Girih Lattice Pattern Watermark */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.035;
-  background-image: radial-gradient(var(--text-main) 1px, transparent 1px),
-                    radial-gradient(var(--islamic-emerald) 1px, var(--bg-primary) 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C5A059' stroke-width='0.75' stroke-opacity='0.16'%3E%3Cpath d='M36 0 L36 72 M0 36 L72 36'/%3E%3Cpolygon points='36,8 45,26 64,36 45,46 36,64 27,46 8,36 27,26'/%3E%3Cpolygon points='36,13 42,25 54,31 42,37 36,49 30,37 18,31 30,25' transform='rotate(45 36 36)'/%3E%3Ccircle cx='36' cy='36' r='12'/%3E%3Ccircle cx='36' cy='36' r='22'/%3E%3Cpath d='M0 0 L18 18 M72 0 L54 18 M0 72 L18 54 M72 72 L54 54'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
 }
 
-/* App Shell Game Layout - Full Screen Fluid Width */
+/* --------------------------------------------------------------------------
+   3. APP SHELL LAYOUT
+   -------------------------------------------------------------------------- */
 #app-shell {
   position: relative;
   z-index: 1;
@@ -92,22 +132,24 @@ body::before {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 16px 32px;
+  padding: 16px 28px;
 }
 
-/* ==========================================================================
-   TOP GAME HUD (Status Bar)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   4. TOP ISLAMIC EDITORIAL HUD (Header Bar)
+   -------------------------------------------------------------------------- */
 .game-hud-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--bg-surface);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid #E5D7C3;
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
   padding: 12px 24px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   gap: 16px;
   flex-wrap: wrap;
   width: 100%;
@@ -116,93 +158,148 @@ body::before {
 .hud-profile {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .hud-avatar {
-  width: 40px;
-  height: 40px;
-  background: var(--islamic-emerald);
-  color: #FFF;
-  border: var(--border-thick);
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--c-espresso-mid) 0%, var(--c-espresso) 100%);
+  color: var(--c-gold-light);
+  border: 1.5px solid var(--c-gold);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 12px rgba(45, 27, 15, 0.2);
 }
 
 .hud-agent-info h1 {
-  font-size: 14px;
+  font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--text-main);
+  letter-spacing: 1px;
+  color: var(--text-heading);
   line-height: 1.2;
 }
 
 .hud-agent-info p {
-  font-size: 11px;
+  font-size: 12px;
   font-family: var(--font-mono);
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--c-sandalwood);
+  letter-spacing: 0.5px;
 }
 
+/* Quest Tracker Bar */
 .hud-quest-tracker {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--bg-surface-alt);
-  padding: 6px 14px;
-  border: var(--border-thick);
+  gap: 12px;
+  background: var(--bg-surface-cream);
+  padding: 6px 16px;
+  border: 1px solid #DFCEB8;
   border-radius: var(--radius-pill);
 }
 
 .tracker-title {
-  font-size: 11px;
+  font-size: 11.5px;
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--c-mocha);
 }
 
 .tracker-meter {
-  width: 100px;
-  height: 10px;
+  width: 110px;
+  height: 9px;
   background: #FFF;
-  border: var(--border-thick);
+  border: 1px solid #D6C2A8;
   border-radius: var(--radius-pill);
   overflow: hidden;
 }
 
 .tracker-bar {
   height: 100%;
-  width: 16.6%;
-  background: var(--islamic-mint);
-  transition: width 0.3s ease;
+  width: 14%;
+  background: linear-gradient(90deg, var(--c-gold) 0%, var(--c-gold-bright) 100%);
+  border-radius: var(--radius-pill);
+  transition: width 0.35s ease;
 }
 
 .tracker-val {
-  font-size: 11px;
+  font-size: 11.5px;
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 800;
+  color: var(--text-heading);
 }
 
 .hud-tools {
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+/* Persistent Audio Status Dock Widget */
+.global-audio-dock {
+  background: #FFF;
+  border: 1px solid var(--c-sand-subtle);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
   gap: 8px;
+}
+
+.audio-dock-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.audio-pulse-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #C4B5A5;
+  border: 1px solid #A89584;
+}
+
+.audio-pulse-indicator.playing {
+  background: var(--c-gold);
+  box-shadow: 0 0 10px var(--c-gold-bright);
+  animation: pulse-gold 1.5s infinite;
+}
+
+@keyframes pulse-gold {
+  0% { transform: scale(0.92); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(0.92); opacity: 1; }
+}
+
+.audio-dock-text {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-muted);
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* HUD Interactive Buttons */
 .hud-btn {
-  background: var(--bg-surface);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
+  background: #FFF;
+  border: 1px solid #DFCEB8;
+  box-shadow: var(--shadow-sm);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--text-heading);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -212,77 +309,25 @@ body::before {
 }
 
 .hud-btn:hover {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #121614;
-  background: var(--islamic-mint-soft);
-}
-
-.hud-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: none;
+  background: var(--bg-surface-cream);
+  border-color: var(--c-gold);
+  color: var(--c-mocha);
+  transform: translateY(-1px);
 }
 
 .hud-btn.active {
-  background: var(--islamic-mint);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  color: #FFF;
+  border-color: var(--c-mocha);
 }
 
-/* ==========================================================================
-   PERSISTENT AUDIO DOCK (Global Header)
-   ========================================================================== */
-.global-audio-dock {
-  background: #FFF;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
-  border-radius: var(--radius-sm);
-  padding: 4px 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.audio-dock-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.audio-pulse-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #BBB;
-  border: 1px solid #121614;
-}
-
-.audio-pulse-indicator.playing {
-  background: var(--islamic-mint);
-  box-shadow: 0 0 8px var(--islamic-mint);
-  animation: pulse-ring 1.5s infinite;
-}
-
-@keyframes pulse-ring {
-  0% { transform: scale(0.95); opacity: 1; }
-  50% { transform: scale(1.25); opacity: 0.7; }
-  100% { transform: scale(0.95); opacity: 1; }
-}
-
-.audio-dock-text {
-  font-size: 10px;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  max-width: 140px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ==========================================================================
-   MAIN GAME STAGE VIEWPORT
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   5. MAIN STAGE VIEWPORT & STAGE CARDS
+   -------------------------------------------------------------------------- */
 .game-viewport {
   flex: 1;
   position: relative;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 165px);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -290,15 +335,28 @@ body::before {
 
 .stage-card {
   display: none;
-  background: var(--bg-surface);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal-lg);
-  border-radius: var(--radius-lg);
-  padding: 36px 42px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.5px solid #E5D7C3;
+  box-shadow: var(--shadow-elevated), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-xl);
+  padding: 38px 46px;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.25s ease;
   flex: 1;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--c-sandalwood) 0%, var(--c-gold) 50%, var(--c-sandalwood) 100%);
+  pointer-events: none;
 }
 
 .stage-card.active {
@@ -307,11 +365,11 @@ body::before {
   opacity: 1;
 }
 
-/* Stage Header Banner */
+/* Islamic Stage Hero Banner */
 .stage-hero {
   margin-bottom: 28px;
-  border-bottom: 2px dashed #CBD5E1;
-  padding-bottom: 20px;
+  border-bottom: 1.5px dashed #DFCEB8;
+  padding-bottom: 22px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -323,42 +381,94 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--text-main);
-  color: #FFF;
+  background: linear-gradient(135deg, var(--c-espresso-mid) 0%, var(--c-espresso) 100%);
+  color: var(--c-gold-light);
+  border: 1px solid var(--c-gold);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 800;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(45, 27, 15, 0.15);
 }
 
 .stage-title {
-  font-size: clamp(30px, 2.6vw, 40px);
-  font-weight: 900;
-  line-height: 1.22;
-  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: clamp(30px, 2.7vw, 42px);
+  font-weight: 800;
+  line-height: 1.24;
+  color: var(--text-heading);
+  letter-spacing: -0.5px;
 }
 
 .stage-subtitle {
-  font-size: 17.5px;
+  font-size: 17px;
   color: var(--text-muted);
   margin-top: 8px;
-  line-height: 1.6;
+  line-height: 1.65;
   max-width: 1100px;
 }
 
-/* ==========================================================================
-   STAGE 0: MISSION INTRO & TEAM ROSTER
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   6. ISLAMIC BISMILLAH BANNER & ARABESQUE ORNAMENTS
+   -------------------------------------------------------------------------- */
+.islamic-bismillah-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 10px 0;
+}
+
+.bismillah-calligraphy {
+  font-family: var(--font-arabic);
+  font-size: 34px;
+  color: var(--c-gold-deep);
+  direction: rtl;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(197, 160, 89, 0.2);
+}
+
+.arabesque-divider-line {
+  flex: 1;
+  max-width: 240px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--c-gold) 50%, transparent 100%);
+  position: relative;
+}
+
+.arabesque-divider-line::after {
+  content: "۞";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--c-gold);
+  font-size: 12px;
+  background: #FFF;
+  padding: 0 6px;
+}
+
+.badge-ornament-star {
+  color: var(--c-gold-bright);
+  font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   7. STAGE 0: HERO INTRO & MIHRAB ARCH TEAM DOSSIER
+   -------------------------------------------------------------------------- */
 .intro-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 36px;
+  gap: 40px;
   align-items: stretch;
   margin: 0;
-  padding: 10px 0;
+  padding: 8px 0;
   width: 100%;
 }
 
@@ -369,43 +479,47 @@ body::before {
 }
 
 .intro-content h2 {
-  font-size: clamp(36px, 3.2vw, 48px);
-  font-weight: 900;
-  line-height: 1.18;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 3.1vw, 46px);
+  font-weight: 800;
+  line-height: 1.2;
   margin-bottom: 20px;
   letter-spacing: -0.5px;
+  color: var(--text-heading);
 }
 
 .intro-content h2 span {
-  background: var(--islamic-mint);
-  padding: 2px 10px;
-  border: var(--border-thick);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  color: #FFF;
+  padding: 2px 14px;
   border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(94, 61, 35, 0.25);
+  display: inline-block;
 }
 
 .intro-desc {
-  font-size: 18px;
+  font-size: 17.5px;
   color: var(--text-muted);
   line-height: 1.7;
   margin-bottom: 26px;
 }
 
+/* Mission Intel Box (Parchment Card) */
 .mission-intel-box {
-  background: var(--bg-surface-alt);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal-sm);
-  border-radius: var(--radius-md);
-  padding: 22px 26px;
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  padding: 22px 28px;
   margin-bottom: 28px;
 }
 
 .intel-row {
   display: flex;
   justify-content: space-between;
-  font-family: var(--font-mono);
   font-size: 14.5px;
   padding: 10px 0;
-  border-bottom: 1.5px dashed #CBD5E1;
+  border-bottom: 1px dashed #DFCDB8;
 }
 
 .intel-row:last-child {
@@ -413,14 +527,16 @@ body::before {
 }
 
 .intel-label {
+  font-family: var(--font-mono);
   font-weight: 800;
-  color: var(--text-muted);
+  font-size: 12.5px;
+  color: var(--c-sandalwood);
   letter-spacing: 0.5px;
 }
 
 .intel-val {
-  font-weight: 800;
-  color: var(--text-main);
+  font-weight: 700;
+  color: var(--text-heading);
   font-size: 15px;
 }
 
@@ -430,171 +546,306 @@ body::before {
   flex-wrap: wrap;
 }
 
+/* Royal Islamic Primary Button */
 .btn-game-primary {
-  background: var(--islamic-mint);
-  border: var(--border-heavy);
-  box-shadow: 4px 4px 0px #121614;
-  color: var(--text-main);
-  font-size: 16.5px;
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  border: 1.5px solid var(--c-gold);
+  box-shadow: 0 8px 24px rgba(94, 61, 35, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: #FFF;
+  font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 800;
+  letter-spacing: 1px;
   padding: 18px 36px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-normal);
   text-decoration: none;
 }
 
 .btn-game-primary:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #121614;
-  background: #00FF83;
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--c-sandalwood-light) 0%, var(--c-sandalwood) 100%);
+  box-shadow: 0 12px 30px rgba(94, 61, 35, 0.4), 0 0 16px var(--c-gold-glow);
 }
 
-.btn-game-secondary {
-  background: var(--bg-surface);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
-  color: var(--text-main);
-  font-size: 15px;
-  font-weight: 700;
-  padding: 14px 24px;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all var(--transition-fast);
+.btn-game-primary:active {
+  transform: translateY(0);
 }
 
-.btn-game-secondary:hover {
-  background: var(--bg-surface-alt);
-  transform: translate(1px, 1px);
-}
-
-/* Team Card */
+/* Team Dossier Card (Islamic Arch Inspired Portal) */
 .team-dossier-card {
-  background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
-  border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #DFCDB8;
+  outline: 1px solid rgba(197, 160, 89, 0.35);
+  outline-offset: 4px;
+  box-shadow: var(--shadow-card);
+  border-radius: 40px 40px var(--radius-lg) var(--radius-lg);
+  padding: 30px 28px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
+}
+
+.dossier-arch-crown {
+  width: 100%;
+  color: var(--c-gold-soft);
+  margin-bottom: -10px;
+}
+
+.arch-svg-decor {
+  width: 100%;
+  height: 20px;
+  display: block;
 }
 
 .dossier-header {
-  border-bottom: 3px solid #121614;
+  border-bottom: 2px solid #E2D3BE;
   padding-bottom: 16px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.dossier-sub-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--c-sandalwood);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+
 .dossier-header h3 {
-  font-size: 22px;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  margin: 0;
+  color: var(--text-heading);
 }
 
 .dossier-group-label {
   font-family: var(--font-mono);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 800;
-  color: var(--islamic-emerald);
-  margin-top: 6px;
+  color: var(--c-gold-deep);
+  margin-top: 4px;
   letter-spacing: 0.5px;
 }
 
 .dossier-stamp {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 800;
-  color: var(--islamic-emerald);
-  border: 2px solid var(--islamic-emerald);
-  padding: 4px 10px;
-  border-radius: 6px;
-  transform: rotate(-3deg);
+  color: var(--c-mocha);
+  background: var(--bg-surface-cream);
+  border: 1.5px solid var(--c-gold);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-2deg);
 }
 
 .team-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 6px;
+  gap: 14px;
+  margin-top: 4px;
 }
 
 .member-item {
   display: flex;
   align-items: center;
   gap: 16px;
-  background: #FAF8F5;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
+  background: #FFF;
+  border: 1.5px solid #E8DCBE;
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  padding: 16px 20px;
+  transition: all var(--transition-fast);
 }
 
 .member-item:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #121614;
-  background: var(--islamic-mint-soft);
+  transform: translateX(4px);
+  border-color: var(--c-gold);
+  box-shadow: 0 6px 18px rgba(197, 160, 89, 0.2);
+  background: var(--bg-parchment);
 }
 
 .member-num-badge {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  background: var(--islamic-emerald);
-  color: #FFF;
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 800;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #121614;
   flex-shrink: 0;
-  box-shadow: 2px 2px 0px #121614;
+}
+
+.rub-star-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  border: 1.5px solid var(--c-gold);
+  border-radius: var(--radius-sm);
+  transform: rotate(45deg);
+  box-shadow: 0 3px 8px rgba(45, 27, 15, 0.2);
+}
+
+.member-num-text {
+  position: relative;
+  z-index: 1;
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  font-weight: 800;
 }
 
 .member-name-text {
-  font-size: 17.5px;
-  font-weight: 800;
-  color: var(--text-main);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-heading);
   line-height: 1.4;
 }
 
-/* ==========================================================================
-   STAGE 1: PEMAPARAN MATERI (The Crisis & 5 Pillars)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   8. LUXURY DARK ESPRESSO STATS STRIP (Directly Inspired by Reference Image)
+   -------------------------------------------------------------------------- */
+.islamic-stats-ribbon {
+  background: linear-gradient(135deg, var(--c-espresso-dark) 0%, var(--c-espresso-mid) 50%, var(--c-espresso-dark) 100%);
+  border: 1.5px solid var(--c-gold);
+  box-shadow: var(--shadow-dark-card);
+  border-radius: var(--radius-lg);
+  padding: 26px 34px;
+  margin-top: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.islamic-stats-ribbon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='30,5 37,22 55,30 37,38 30,55 23,38 5,30 23,22' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.stats-ribbon-header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.ribbon-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--c-gold-light);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.stats-ribbon-header h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.5px;
+}
+
+.stats-ribbon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-pill-item {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: var(--radius-md);
+  padding: 18px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+
+.stat-pill-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--c-gold-light);
+}
+
+.stat-star-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.2);
+  border: 1px solid var(--c-gold-light);
+  color: var(--c-gold-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--c-gold-bright);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.stat-lbl {
+  font-size: 12.5px;
+  color: #E2D3BE;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   9. STAGE 1: PEMAPARAN MATERI (Krisis & 5 Pilar Arsitektural)
+   -------------------------------------------------------------------------- */
 .materi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 26px;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 .materi-card {
-  background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
-  border-radius: var(--radius-md);
-  padding: 26px 28px;
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-lg);
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .materi-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  border-color: var(--c-gold);
+  box-shadow: var(--shadow-elevated);
 }
 
 .materi-card-header {
@@ -607,8 +858,8 @@ body::before {
 .materi-card-icon {
   width: 50px;
   height: 50px;
-  border-radius: var(--radius-sm);
-  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  border: 1px solid #D6C3AB;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -616,31 +867,24 @@ body::before {
 }
 
 .materi-card-icon.danger {
-  background: var(--danger-soft);
-  color: var(--danger);
-}
-
-.materi-card-icon.emerald {
-  background: var(--islamic-mint-soft);
-  color: var(--islamic-emerald);
-}
-
-.materi-card-icon.gold {
-  background: var(--islamic-gold-soft);
-  color: #B58D14;
+  background: var(--c-ruby-soft);
+  color: var(--c-ruby);
+  border-color: var(--c-ruby-border);
 }
 
 .materi-card-title {
+  font-family: var(--font-display);
   font-size: 19px;
   font-weight: 800;
   line-height: 1.3;
+  color: var(--text-heading);
 }
 
 .materi-card-desc {
   font-size: 15.5px;
   color: var(--text-muted);
-  margin-bottom: 16px;
-  line-height: 1.6;
+  margin-bottom: 18px;
+  line-height: 1.65;
   flex-grow: 1;
 }
 
@@ -652,31 +896,34 @@ body::before {
 }
 
 .pill-tag {
-  font-size: 11.5px;
+  font-size: 11px;
   font-family: var(--font-mono);
   font-weight: 700;
   padding: 5px 12px;
-  border: 1.5px solid #121614;
+  border: 1px solid #DFCEB8;
   border-radius: var(--radius-pill);
-  background: var(--bg-surface-alt);
+  background: #FFF;
+  color: var(--c-mocha);
 }
 
-/* 5 Pillars Horizontal Flow */
+/* 5 Pillars Styled as Islamic Mihrab Minarets */
 .pillars-container {
-  background: var(--bg-surface-alt);
-  border: var(--border-heavy);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
+  border-radius: var(--radius-xl);
+  padding: 30px 34px;
   margin-top: 14px;
 }
 
 .pillars-title {
-  font-size: 22px;
+  font-family: var(--font-display);
+  font-size: 21px;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   display: flex;
   align-items: center;
   gap: 12px;
+  color: var(--text-heading);
 }
 
 .pillars-flex {
@@ -687,42 +934,59 @@ body::before {
 
 .pillar-col {
   background: #FFF;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
-  border-radius: var(--radius-md);
-  padding: 20px 14px;
+  border: 1.5px solid #E2D3BE;
+  border-radius: 28px 28px var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 22px 14px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.pillar-col::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: var(--c-gold);
+  border-radius: var(--radius-pill);
 }
 
 .pillar-col:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  border-color: var(--c-gold);
+  box-shadow: var(--shadow-gold);
 }
 
 .pillar-num {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: var(--islamic-emerald);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
   color: #FFF;
-  font-family: var(--font-mono);
-  font-size: 15px;
+  font-family: var(--font-display);
+  font-size: 16px;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
-  border: 2px solid #121614;
+  margin-bottom: 12px;
+  border: 1.5px solid var(--c-gold);
+  box-shadow: 0 3px 8px rgba(94, 61, 35, 0.2);
 }
 
 .pillar-head {
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 15.5px;
   font-weight: 800;
   margin-bottom: 8px;
   line-height: 1.25;
+  color: var(--text-heading);
 }
 
 .pillar-sub {
@@ -731,9 +995,9 @@ body::before {
   line-height: 1.5;
 }
 
-/* ==========================================================================
-   STAGE 2: DALIL NAQLI & INTEGRATED MUROTTAL PLAYER
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   10. STAGE 2: DALIL NAQLI & ACOUSTIC MUROTTAL PLAYER (Illuminated Manuscript)
+   -------------------------------------------------------------------------- */
 .dalil-deck-container {
   display: flex;
   flex-direction: column;
@@ -741,102 +1005,109 @@ body::before {
 }
 
 .dalil-card {
-  background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
+  background: var(--bg-parchment);
+  border: 1.5px solid var(--c-gold);
+  outline: 1.5px solid #E5D7C3;
+  outline-offset: 4px;
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-lg);
-  padding: 32px 34px;
+  padding: 34px 38px;
+  position: relative;
 }
 
 .dalil-badge-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 1.5px dashed #CBD5E1;
-  padding-bottom: 14px;
+  margin-bottom: 22px;
+  border-bottom: 1px dashed #DFCDB8;
+  padding-bottom: 16px;
 }
 
 .dalil-ref-badge {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 14.5px;
   font-weight: 800;
-  background: var(--islamic-emerald);
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
   color: #FFF;
-  padding: 6px 16px;
-  border: var(--border-thick);
+  padding: 6px 18px;
+  border: 1px solid var(--c-gold);
   border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-brutal-sm);
+  box-shadow: 0 4px 12px rgba(94, 61, 35, 0.2);
 }
 
 .dalil-theme-badge {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
-  color: var(--text-muted);
-  background: var(--bg-surface-alt);
+  color: var(--c-mocha);
+  background: var(--bg-surface-cream);
   padding: 6px 14px;
-  border: 1.5px solid #121614;
-  border-radius: var(--radius-sm);
+  border: 1px solid #DFCEB8;
+  border-radius: var(--radius-pill);
 }
 
+/* Magnificent Quranic Calligraphy */
 .arabic-text {
   font-family: var(--font-arabic);
-  font-size: clamp(26px, 2.3vw, 32px);
-  line-height: 2.35;
+  font-size: clamp(28px, 2.5vw, 34px);
+  line-height: 2.4;
   direction: rtl;
   text-align: right;
-  color: var(--text-main);
-  background: #FAF8F5;
-  border: var(--border-thick);
-  border-right: 8px solid var(--islamic-emerald);
+  color: var(--text-heading);
+  background: #FFF;
+  border: 1px solid #E6D7C3;
+  border-right: 6px solid var(--c-gold);
   border-radius: var(--radius-md);
-  padding: 26px 30px;
-  margin-bottom: 22px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 
 .translation-box {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .translation-title {
-  font-size: 13.5px;
+  font-size: 13px;
   font-family: var(--font-mono);
   font-weight: 800;
-  color: var(--text-muted);
+  color: var(--c-sandalwood);
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   margin-bottom: 6px;
 }
 
 .translation-content {
-  font-size: 16.5px;
+  font-size: 17px;
   font-style: italic;
   color: var(--text-main);
   line-height: 1.7;
 }
 
 .tafsir-callout {
-  background: var(--islamic-mint-soft);
-  border-left: 6px solid var(--islamic-emerald);
-  padding: 16px 20px;
+  background: var(--bg-surface-cream);
+  border-left: 5px solid var(--c-gold);
+  padding: 16px 22px;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   font-size: 15px;
   line-height: 1.65;
   color: var(--text-main);
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
-/* Islamic Audio Player Widget */
+/* Islamic Murottal Player Widget */
 .audio-player-unit {
-  background: var(--bg-surface-alt);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
+  background: #FFF;
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius-md);
-  padding: 18px 22px;
+  padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -850,21 +1121,20 @@ body::before {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: var(--islamic-mint);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal-sm);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  border: 1.5px solid var(--c-gold);
+  box-shadow: 0 4px 14px rgba(94, 61, 35, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-fast);
-  color: var(--text-main);
+  color: #FFF;
 }
 
 .btn-play-pause:hover {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #121614;
-  background: #00FF83;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(94, 61, 35, 0.35);
 }
 
 .audio-meta-info {
@@ -873,15 +1143,16 @@ body::before {
 }
 
 .audio-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--text-heading);
 }
 
 .audio-time-stamp {
   font-family: var(--font-mono);
   font-size: 12.5px;
-  color: var(--text-muted);
+  color: var(--c-sandalwood);
 }
 
 .audio-scrubber-group {
@@ -894,13 +1165,12 @@ body::before {
 
 .audio-slider {
   width: 100%;
-  height: 8px;
+  height: 7px;
   border-radius: 4px;
-  background: #FFF;
-  border: 1.5px solid #121614;
+  background: #E8DCBE;
   outline: none;
   cursor: pointer;
-  accent-color: var(--islamic-emerald);
+  accent-color: var(--c-gold);
 }
 
 .audio-actions-right {
@@ -910,16 +1180,16 @@ body::before {
 }
 
 .btn-download-audio {
-  background: #FFF;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
+  background: var(--bg-surface-cream);
+  border: 1px solid #D6C3AB;
+  box-shadow: var(--shadow-sm);
   padding: 10px 18px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-family: var(--font-mono);
-  font-size: 12.5px;
-  font-weight: 800;
+  font-size: 12px;
+  font-weight: 700;
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text-heading);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -927,13 +1197,15 @@ body::before {
 }
 
 .btn-download-audio:hover {
-  background: var(--islamic-mint);
-  transform: translate(1px, 1px);
+  background: #FFF;
+  border-color: var(--c-gold);
+  color: var(--c-mocha);
+  transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   STAGE 3: LAB SIMULATOR VIDEO INTERAKTIF (3 Kasus Medsos & Kontrol Zoom)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   11. STAGE 3: LAB SIMULATOR VIDEO INTERAKTIF (Theater Card)
+   -------------------------------------------------------------------------- */
 .video-lab-grid {
   display: grid;
   grid-template-columns: 1.25fr 0.95fr;
@@ -956,39 +1228,41 @@ body::before {
 }
 
 .btn-video-tab {
-  background: var(--bg-surface);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
+  background: var(--bg-surface-warm);
+  border: 1px solid #DFCEB8;
+  box-shadow: var(--shadow-sm);
   padding: 12px 20px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-weight: 800;
-  font-size: 13.5px;
+  font-size: 13px;
   cursor: pointer;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   transition: all var(--transition-fast);
-  color: var(--text-main);
+  color: var(--text-muted);
 }
 
 .btn-video-tab:hover {
-  background: var(--bg-surface-alt);
-  transform: translate(1px, 1px);
+  background: #FFF;
+  border-color: var(--c-gold);
+  color: var(--c-mocha);
 }
 
 .btn-video-tab.active {
-  background: var(--islamic-mint);
-  border-color: var(--text-main);
-  box-shadow: var(--shadow-brutal);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  color: #FFF;
+  border-color: var(--c-gold);
+  box-shadow: 0 4px 14px rgba(94, 61, 35, 0.25);
 }
 
 /* Video Player Card Container */
 .video-player-card {
-  background: #0E1411;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal-lg);
+  background: var(--c-espresso-dark);
+  border: 1.5px solid var(--c-gold);
+  box-shadow: var(--shadow-dark-card);
   border-radius: var(--radius-lg);
   padding: 16px;
   display: flex;
@@ -1001,7 +1275,7 @@ body::before {
   position: relative;
   width: 100%;
   height: 520px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   overflow: hidden;
   background: #000;
   display: flex;
@@ -1028,8 +1302,8 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #17211C;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1B1108;
+  border-top: 1px solid rgba(197, 160, 89, 0.25);
   margin-top: 12px;
   padding: 12px 18px;
   border-radius: var(--radius-sm);
@@ -1051,8 +1325,8 @@ body::before {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--danger);
-  box-shadow: 0 0 8px var(--danger);
+  background: var(--c-ruby-light);
+  box-shadow: 0 0 8px var(--c-ruby);
 }
 
 .video-zoom-btn-group {
@@ -1062,14 +1336,14 @@ body::before {
 }
 
 .btn-video-control {
-  background: #23312A;
-  color: #FFF;
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: #2D1D11;
+  color: #E2D3BE;
+  border: 1px solid rgba(197, 160, 89, 0.3);
   padding: 8px 16px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-family: var(--font-mono);
-  font-size: 12.5px;
-  font-weight: 800;
+  font-size: 12px;
+  font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1078,22 +1352,21 @@ body::before {
 }
 
 .btn-video-control:hover {
-  background: var(--islamic-mint);
-  color: var(--text-main);
-  border-color: var(--islamic-mint);
-  transform: translate(1px, 1px);
+  background: var(--c-gold);
+  color: var(--c-espresso);
+  border-color: var(--c-gold);
 }
 
 .btn-video-control.active {
-  background: var(--islamic-mint);
-  color: var(--text-main);
+  background: var(--c-gold);
+  color: var(--c-espresso);
 }
 
-/* Video Response / Decision Terminal */
+/* Video Decision Terminal */
 .video-decision-terminal {
-  background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-lg);
   padding: 26px 28px;
   display: flex;
@@ -1101,7 +1374,7 @@ body::before {
 }
 
 .terminal-header {
-  border-bottom: 2px solid #121614;
+  border-bottom: 1.5px solid #E2D3BE;
   padding-bottom: 14px;
   margin-bottom: 18px;
   display: flex;
@@ -1110,14 +1383,15 @@ body::before {
 }
 
 .terminal-title {
+  font-family: var(--font-display);
   font-size: 18px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--text-heading);
 }
 
 .video-case-info-box {
-  background: var(--bg-surface-alt);
-  border: var(--border-thick);
+  background: #FFF;
+  border: 1px solid #E2D3BE;
   border-radius: var(--radius-md);
   padding: 20px;
   margin-bottom: 20px;
@@ -1125,32 +1399,33 @@ body::before {
 
 .video-case-badge {
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
   display: inline-block;
   margin-bottom: 10px;
 }
 
 .video-case-badge.danger {
-  background: #FFE4E6;
-  color: #9F1239;
-  border: 1.5px solid #9F1239;
+  background: var(--c-ruby-soft);
+  color: var(--c-ruby);
+  border: 1px solid var(--c-ruby-border);
 }
 
 .video-case-badge.halal {
-  background: #D1FAE5;
-  color: #065F46;
-  border: 1.5px solid #065F46;
+  background: var(--c-emerald-soft);
+  color: var(--c-emerald);
+  border: 1px solid var(--c-emerald-border);
 }
 
 .video-case-title {
+  font-family: var(--font-display);
   font-size: 17.5px;
   font-weight: 800;
   margin-bottom: 8px;
-  color: var(--text-main);
+  color: var(--text-heading);
 }
 
 .video-case-desc {
@@ -1159,7 +1434,6 @@ body::before {
   line-height: 1.55;
 }
 
-/* Action Choices Grid */
 .video-options-container {
   display: flex;
   flex-direction: column;
@@ -1169,8 +1443,8 @@ body::before {
 
 .btn-response-option {
   background: #FFF;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   font-size: 15px;
@@ -1181,48 +1455,48 @@ body::before {
   align-items: flex-start;
   gap: 14px;
   transition: all var(--transition-fast);
-  color: var(--text-main);
+  color: var(--text-heading);
 }
 
 .btn-response-option:hover:not(:disabled) {
-  background: var(--bg-surface-alt);
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #121614;
+  border-color: var(--c-gold);
+  background: var(--bg-parchment);
+  transform: translateX(3px);
 }
 
 .btn-response-option.chosen-correct {
-  background: #D1FAE5 !important;
-  border-color: #065F46 !important;
-  color: #064E3B !important;
+  background: var(--c-emerald-soft) !important;
+  border-color: var(--c-emerald) !important;
+  color: var(--c-emerald) !important;
 }
 
 .btn-response-option.chosen-wrong {
-  background: #FFE4E6 !important;
-  border-color: #9F1239 !important;
-  color: #881337 !important;
+  background: var(--c-ruby-soft) !important;
+  border-color: var(--c-ruby) !important;
+  color: var(--c-ruby) !important;
 }
 
 .response-opt-indicator {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1.5px solid #121614;
-  background: var(--bg-surface-alt);
+  border: 1px solid #D6C3AB;
+  background: var(--bg-surface-cream);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 800;
+  color: var(--c-mocha);
   flex-shrink: 0;
   margin-top: 1px;
 }
 
-/* Video Analysis Feedback Callout */
 .video-feedback-card {
   display: none;
-  background: #FAF8F5;
-  border: var(--border-thick);
+  background: #FFF;
+  border: 1.5px solid #E2D3BE;
   border-radius: var(--radius-md);
   padding: 20px;
   animation: fadeIn 0.3s ease;
@@ -1234,14 +1508,15 @@ body::before {
 }
 
 .video-feedback-card.correct {
-  border-left: 6px solid var(--islamic-emerald);
+  border-left: 6px solid var(--c-emerald);
 }
 
 .video-feedback-card.wrong {
-  border-left: 6px solid var(--danger);
+  border-left: 6px solid var(--c-ruby);
 }
 
 .feedback-headline {
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 800;
   margin-bottom: 8px;
@@ -1259,17 +1534,17 @@ body::before {
 
 .feedback-dalil-quote {
   font-family: var(--font-mono);
-  font-size: 11px;
-  background: #FFF;
-  border: 1px dashed #121614;
-  padding: 8px 12px;
+  font-size: 12px;
+  background: var(--bg-surface-cream);
+  border: 1px dashed var(--c-gold);
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
-  color: var(--text-muted);
+  color: var(--c-mocha);
 }
 
-/* ==========================================================================
-   STAGE 4: KAJIAN STUDI KASUS VIRAL
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   12. STAGE 4: KAJIAN STUDI KASUS VIRAL (Fiqih Panels)
+   -------------------------------------------------------------------------- */
 .case-study-nav {
   display: flex;
   gap: 12px;
@@ -1279,13 +1554,13 @@ body::before {
 }
 
 .case-nav-btn {
-  background: var(--bg-surface);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
-  padding: 12px 20px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-weight: 800;
+  background: var(--bg-surface-warm);
+  border: 1px solid #DFCEB8;
+  box-shadow: var(--shadow-sm);
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: 13.5px;
   cursor: pointer;
   white-space: nowrap;
@@ -1293,18 +1568,26 @@ body::before {
   align-items: center;
   gap: 10px;
   transition: all var(--transition-fast);
-  color: var(--text-main);
+  color: var(--text-muted);
+}
+
+.case-nav-btn:hover {
+  background: #FFF;
+  border-color: var(--c-gold);
+  color: var(--c-mocha);
 }
 
 .case-nav-btn.active {
-  background: var(--islamic-mint);
-  box-shadow: var(--shadow-brutal);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  color: #FFF;
+  border-color: var(--c-gold);
+  box-shadow: 0 4px 14px rgba(94, 61, 35, 0.25);
 }
 
 .case-detail-container {
-  background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-lg);
   padding: 32px;
 }
@@ -1316,18 +1599,18 @@ body::before {
 }
 
 .case-card-panel {
-  background: var(--bg-surface-alt);
-  border: var(--border-thick);
+  background: #FFF;
+  border: 1px solid #E2D3BE;
   border-radius: var(--radius-md);
   padding: 24px 26px;
 }
 
 .case-panel-title {
-  font-size: 15px;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
+  font-size: 15.5px;
   font-weight: 800;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--c-sandalwood);
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -1348,8 +1631,8 @@ body::before {
 }
 
 .impact-item {
-  background: #FFF;
-  border: 1.5px solid #121614;
+  background: var(--bg-surface-warm);
+  border: 1px solid #E2D3BE;
   border-radius: var(--radius-sm);
   padding: 12px 16px;
   font-size: 14.5px;
@@ -1360,21 +1643,23 @@ body::before {
 
 .legal-verdict-box {
   background: #FFF;
-  border: var(--border-thick);
-  border-left: 6px solid var(--danger);
+  border: 1px solid #E2D3BE;
+  border-left: 6px solid var(--c-ruby);
   border-radius: var(--radius-sm);
   padding: 18px 22px;
   margin-bottom: 18px;
 }
 
 .legal-verdict-box.halal {
-  border-left-color: var(--islamic-emerald);
+  border-left-color: var(--c-emerald);
 }
 
 .verdict-header {
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 16px;
   margin-bottom: 8px;
+  color: var(--text-heading);
 }
 
 .verdict-body {
@@ -1383,9 +1668,9 @@ body::before {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
-   STAGE 5: SESI TANYA JAWAB & KUIS INTERAKTIF
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   13. STAGE 5: SESI TANYA JAWAB & KUIS INTERAKTIF
+   -------------------------------------------------------------------------- */
 .quiz-arena {
   display: flex;
   flex-direction: column;
@@ -1399,35 +1684,38 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--bg-surface-alt);
-  border: var(--border-thick);
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
   border-radius: var(--radius-md);
   padding: 16px 24px;
 }
 
 .quiz-score-pill {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 800;
-  background: var(--islamic-mint);
-  border: var(--border-thick);
-  padding: 6px 16px;
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  color: #FFF;
+  border: 1px solid var(--c-gold);
+  padding: 6px 18px;
   border-radius: var(--radius-pill);
 }
 
 .quiz-question-box {
   background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
+  border: 1.5px solid var(--c-gold);
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-lg);
   padding: 36px 40px;
 }
 
 .quiz-question-title {
-  font-size: 24px;
+  font-family: var(--font-display);
+  font-size: 23px;
   font-weight: 800;
   line-height: 1.45;
   margin-bottom: 26px;
+  color: var(--text-heading);
 }
 
 .quiz-options-grid {
@@ -1438,9 +1726,9 @@ body::before {
 }
 
 .quiz-opt-btn {
-  background: #FFF;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius-md);
   padding: 18px 22px;
   font-size: 16px;
@@ -1451,35 +1739,37 @@ body::before {
   align-items: center;
   gap: 16px;
   transition: all var(--transition-fast);
+  color: var(--text-heading);
 }
 
 .quiz-opt-btn:hover:not(:disabled) {
-  background: var(--bg-surface-alt);
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #121614;
+  border-color: var(--c-gold);
+  background: #FFF;
+  transform: translateX(4px);
 }
 
 .quiz-opt-btn.correct {
-  background: #D1FAE5 !important;
-  border-color: #065F46 !important;
-  color: #064E3B !important;
+  background: var(--c-emerald-soft) !important;
+  border-color: var(--c-emerald) !important;
+  color: var(--c-emerald) !important;
 }
 
 .quiz-opt-btn.wrong {
-  background: #FFE4E6 !important;
-  border-color: #9F1239 !important;
-  color: #881337 !important;
+  background: var(--c-ruby-soft) !important;
+  border-color: var(--c-ruby) !important;
+  color: var(--c-ruby) !important;
 }
 
 .opt-letter {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--bg-surface-alt);
-  border: 1.5px solid #121614;
-  font-family: var(--font-mono);
+  background: #FFF;
+  border: 1.5px solid var(--c-gold);
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 800;
+  color: var(--c-mocha);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1488,8 +1778,8 @@ body::before {
 
 .quiz-explanation-card {
   display: none;
-  background: var(--islamic-mint-soft);
-  border: var(--border-thick);
+  background: var(--bg-surface-cream);
+  border: 1px solid var(--c-gold);
   border-radius: var(--radius-md);
   padding: 22px;
   margin-top: 18px;
@@ -1500,12 +1790,14 @@ body::before {
 }
 
 .explanation-title {
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 800;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 10px;
+  color: var(--text-heading);
 }
 
 .explanation-body {
@@ -1514,14 +1806,14 @@ body::before {
   line-height: 1.65;
 }
 
-/* Quiz Final Report Card */
+/* Quiz Final Report View */
 .quiz-result-view {
   display: none;
   background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal-lg);
+  border: 1.5px solid var(--c-gold);
+  box-shadow: var(--shadow-elevated);
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: 42px;
   text-align: center;
 }
 
@@ -1529,22 +1821,25 @@ body::before {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: var(--islamic-mint);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  color: var(--c-gold-bright);
+  border: 2px solid var(--c-gold);
+  box-shadow: var(--shadow-gold);
   margin: 0 auto 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 32px;
   font-weight: 800;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
 }
 
 .result-verdict {
+  font-family: var(--font-display);
   font-size: 26px;
   font-weight: 800;
   margin-bottom: 10px;
+  color: var(--text-heading);
 }
 
 .result-desc {
@@ -1562,9 +1857,9 @@ body::before {
   flex-wrap: wrap;
 }
 
-/* ==========================================================================
-   STAGE 6: REFLEKSI DIRI, KESIMPULAN MAKALAH & DOA PENUTUP
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   14. STAGE 6: REFLEKSI DIRI, KESIMPULAN MAKALAH & DOA PENUTUP
+   -------------------------------------------------------------------------- */
 .reflection-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1573,9 +1868,9 @@ body::before {
 }
 
 .reflection-panel {
-  background: #FFF;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
+  background: var(--bg-surface-warm);
+  border: 1.5px solid #E2D3BE;
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-lg);
   padding: 30px 32px;
   display: flex;
@@ -1586,32 +1881,40 @@ body::before {
   display: flex;
   gap: 18px;
   margin-bottom: 16px;
-  background: var(--bg-surface-alt);
-  border: var(--border-thick);
+  background: #FFF;
+  border: 1px solid #E2D3BE;
   border-radius: var(--radius-md);
   padding: 18px 22px;
+  transition: all var(--transition-fast);
+}
+
+.reflection-card-step:hover {
+  border-color: var(--c-gold);
+  transform: translateX(3px);
 }
 
 .reflection-step-num {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--islamic-emerald);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
   color: #FFF;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 2px solid #121614;
+  border: 1.5px solid var(--c-gold);
 }
 
 .reflection-step-content h4 {
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 800;
   margin-bottom: 6px;
+  color: var(--text-heading);
 }
 
 .reflection-step-content p {
@@ -1620,7 +1923,7 @@ body::before {
   line-height: 1.65;
 }
 
-/* Conclusion Makalah List */
+/* Makalah Scientific Conclusion List */
 .kesimpulan-list {
   display: flex;
   flex-direction: column;
@@ -1631,19 +1934,25 @@ body::before {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  background: #FAF8F5;
-  border: var(--border-thick);
-  border-left: 6px solid var(--islamic-emerald);
+  background: #FFF;
+  border: 1px solid #E2D3BE;
+  border-left: 6px solid var(--c-gold);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   font-size: 15.5px;
   line-height: 1.65;
   color: var(--text-main);
+  transition: transform var(--transition-fast);
+}
+
+.kesimpulan-item:hover {
+  transform: translateX(3px);
 }
 
 .kesimpulan-icon-badge {
-  background: var(--islamic-mint);
-  border: 1.5px solid #121614;
+  background: var(--bg-surface-cream);
+  border: 1px solid var(--c-gold);
+  color: var(--c-gold-deep);
   border-radius: 50%;
   width: 28px;
   height: 28px;
@@ -1654,53 +1963,76 @@ body::before {
   margin-top: 2px;
 }
 
-/* Doa Full Width Banner */
+/* Doa Full Width Banner (Luxury Dark Espresso & Gold Illuminated) */
 .doa-full-banner {
-  background: #FAF8F5;
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
+  background: linear-gradient(135deg, var(--c-espresso-dark) 0%, var(--c-espresso-mid) 50%, var(--c-espresso-dark) 100%);
+  border: 2px solid var(--c-gold);
+  outline: 1.5px solid rgba(197, 160, 89, 0.35);
+  outline-offset: 4px;
+  box-shadow: var(--shadow-dark-card);
   border-radius: var(--radius-lg);
-  padding: 32px 36px;
+  padding: 34px 40px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.doa-full-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='36,8 45,26 64,36 45,46 36,64 27,46 8,36 27,26' fill='%23C5A059'/%3E%3C/svg%3E");
+  background-size: 72px 72px;
+  pointer-events: none;
 }
 
 .doa-arabic-large {
   font-family: var(--font-arabic);
-  font-size: 30px;
+  font-size: clamp(28px, 2.6vw, 34px);
   direction: rtl;
   text-align: center;
-  line-height: 2.25;
+  line-height: 2.3;
   margin-bottom: 14px;
-  color: var(--islamic-emerald);
+  color: var(--c-gold-bright);
+  text-shadow: 0 2px 8px rgba(197, 160, 89, 0.35);
+  position: relative;
+  z-index: 1;
 }
 
 .doa-latin {
   font-family: var(--font-sans);
   font-size: 16px;
-  font-weight: 800;
-  color: var(--text-main);
+  font-weight: 700;
+  color: #FFF;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .doa-meaning-large {
   font-size: 16.5px;
   font-style: italic;
-  color: var(--text-muted);
+  color: #DFCDB8;
   line-height: 1.65;
   max-width: 950px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* ==========================================================================
-   BOTTOM GAME CONTROLLER CONSOLE (Dock)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   15. BOTTOM GAME CONTROLLER DOCK
+   -------------------------------------------------------------------------- */
 .game-controller-dock {
-  background: var(--bg-surface);
-  border: var(--border-heavy);
-  box-shadow: var(--shadow-brutal);
-  border-radius: var(--radius-md);
-  padding: 10px 18px;
-  margin-top: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid #E5D7C3;
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-lg);
+  padding: 10px 20px;
+  margin-top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1711,28 +2043,32 @@ body::before {
 .dpad-controls {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .btn-dpad {
-  background: var(--bg-surface-alt);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-brutal-sm);
-  border-radius: var(--radius-sm);
-  padding: 10px 18px;
-  font-family: var(--font-mono);
+  background: var(--bg-surface-warm);
+  border: 1px solid #DFCEB8;
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 800;
+  letter-spacing: 0.5px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all var(--transition-fast);
+  color: var(--text-heading);
 }
 
 .btn-dpad:hover:not(:disabled) {
-  background: var(--islamic-mint);
-  transform: translate(1px, 1px);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
+  color: #FFF;
+  border-color: var(--c-gold);
+  transform: translateY(-1px);
 }
 
 .btn-dpad:disabled {
@@ -1750,10 +2086,10 @@ body::before {
 }
 
 .btn-stage-slot {
-  background: var(--bg-surface);
-  border: 1.5px solid #121614;
-  border-radius: var(--radius-sm);
-  padding: 7px 13px;
+  background: var(--bg-surface-warm);
+  border: 1px solid #DFCEB8;
+  border-radius: var(--radius-pill);
+  padding: 7px 15px;
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 800;
@@ -1764,15 +2100,16 @@ body::before {
 }
 
 .btn-stage-slot:hover {
-  background: var(--bg-surface-alt);
-  color: var(--text-main);
+  background: #FFF;
+  border-color: var(--c-gold);
+  color: var(--c-mocha);
 }
 
 .btn-stage-slot.active {
-  background: var(--islamic-emerald);
+  background: linear-gradient(135deg, var(--c-sandalwood) 0%, var(--c-mocha) 100%);
   color: #FFF;
-  border-color: #121614;
-  box-shadow: 2px 2px 0px #121614;
+  border-color: var(--c-gold);
+  box-shadow: 0 3px 10px rgba(94, 61, 35, 0.25);
 }
 
 .controller-hotkeys-hint {
@@ -1785,113 +2122,89 @@ body::before {
 }
 
 .kbd-badge {
-  background: #FFF;
-  border: 1px solid #121614;
-  box-shadow: 1px 1px 0px #121614;
-  padding: 2px 5px;
-  border-radius: 3px;
+  background: var(--bg-surface-cream);
+  border: 1px solid #D6C2A8;
+  padding: 3px 7px;
+  border-radius: var(--radius-xs);
   font-size: 10px;
   font-weight: 700;
+  color: var(--c-mocha);
 }
 
-/* ==========================================================================
-   SVG ICON SYSTEM (Zero Unicode Emoji)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   16. SVG ICON SYSTEM (Strict Zero Emoji Policy)
+   -------------------------------------------------------------------------- */
 .icon {
   width: 18px;
   height: 18px;
-  stroke-width: 2.2;
+  stroke-width: 2;
   stroke: currentColor;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  display: inline-block;
   vertical-align: middle;
-  flex-shrink: 0;
 }
 
 .icon-sm {
   width: 14px;
   height: 14px;
-  stroke-width: 2.2;
 }
 
-.icon-lg {
-  width: 24px;
-  height: 24px;
-  stroke-width: 2.2;
-}
-
-.icon-xl {
-  width: 36px;
-  height: 36px;
-  stroke-width: 2;
-}
-
-/* ==========================================================================
-   KEYFRAME ANIMATIONS & HELPERS
-   ========================================================================== */
+/* Keyframe animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==========================================================================
-   RESPONSIVE OPTIMIZATIONS
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   17. RESPONSIVE DESIGN (Tablets & Mobile)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .intro-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
-  .lab-split-grid {
+  
+  .stats-ribbon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .video-lab-grid {
     grid-template-columns: 1fr;
   }
+
   .case-grid-two-col {
     grid-template-columns: 1fr;
   }
+
   .reflection-grid {
     grid-template-columns: 1fr;
   }
+
   .pillars-flex {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   #app-shell {
-    padding: 8px;
+    padding: 12px 14px;
   }
+
   .stage-card {
-    padding: 18px;
+    padding: 24px 20px;
   }
-  .stage-hero {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .game-hud-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .hud-quest-tracker {
-    width: 100%;
-    justify-content: space-between;
-  }
+
   .pillars-flex {
     grid-template-columns: 1fr;
   }
-  .audio-player-unit {
+
+  .stats-ribbon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stage-hero {
     flex-direction: column;
-    align-items: stretch;
-  }
-  .game-controller-dock {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .stage-selector-strip {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  .controller-hotkeys-hint {
-    display: none;
+    align-items: flex-start;
   }
 }
