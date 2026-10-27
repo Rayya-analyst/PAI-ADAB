@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adab Share Video & Foto di Medsos - Presentasi PAI XI RPL 3</title>
+  <meta name="description" content="Aplikasi Edukasi & Presentasi Interaktif Adab Membagikan Foto dan Video di Media Sosial Perspektif Islam - SMKN 2 Mojokerto">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300E575' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2L2 7l10 5 10-5-10-5z'></path><path d='M2 17l10 5 10-5'></path><path d='M2 12l10 5 10-5'></path></svg>">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Audio Elements (Direct Local Files) -->
+  <audio id="audio-hujurat-6" preload="metadata" src="./Al-Hujurat ayat 6.mp3"></audio>
+  <audio id="audio-hujurat-12" preload="metadata" src="./Al-Hujurat ayat 12.mp3"></audio>
+
+  <div id="app-shell">
+
+    <!-- ======================================================================
+         TOP GAME HUD (Status Bar & Control Terminal)
+         ====================================================================== -->
+    <header class="game-hud-top" id="game-hud">
+      <!-- Profile / Presenter Team Info -->
+      <div class="hud-profile">
+        <div class="hud-avatar">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="hud-agent-info">
+          <h1>KELOMPOK 6</h1>
+          <p>SMKN 2 MOJOKERTO | XI RPL 3</p>
+        </div>
+      </div>
+
+      <!-- Live Quest Progress Tracker -->
+      <div class="hud-quest-tracker">
+        <span class="tracker-title" id="hud-stage-name">00 INTRO</span>
+        <div class="tracker-meter">
+          <div class="tracker-bar" id="hud-progress-bar"></div>
+        </div>
+        <span class="tracker-val" id="hud-progress-val">14%</span>
+      </div>
+
+      <!-- Quick Controls & Audio Dock -->
+      <div class="hud-tools">
+        <!-- Persistent Audio Dock Widget -->
+        <div class="global-audio-dock" title="Status Pemutar Murottal">
+          <div class="audio-dock-status">
+            <div class="audio-pulse-indicator" id="global-audio-indicator"></div>
+            <span class="audio-dock-text" id="global-audio-title">Audio Standby</span>
+          </div>
+          <button class="hud-btn" id="hud-btn-audio-stop" title="Hentikan Audio">
+            <svg class="icon icon-sm" viewBox="0 0 24 24">
+              <rect x="6" y="6" width="12" height="12" fill="currentColor"></rect>
+            </svg>
+          </button>
+        </div>
+
+        <!-- SFX Synthesizer Toggle -->
+        <button class="hud-btn active" id="hud-btn-sfx-toggle" title="Aktifkan/Matikan Suara Efek">
+          <svg class="icon icon-sm" viewBox="0 0 24 24">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <span class="hud-btn-label">SFX: ON</span>
+        </button>
+
+        <!-- Fullscreen Mode Toggle -->
+        <button class="hud-btn" id="hud-btn-fullscreen" title="Layar Penuh (F)">
+          <svg class="icon icon-sm" viewBox="0 0 24 24">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ======================================================================
+         MAIN GAME STAGE VIEWPORT
+         ====================================================================== -->
+    <main class="game-viewport">
+
+      <!-- ====================================================================
+           STAGE 0: MISSION INTRO & TEAM ROSTER
+           ==================================================================== -->
+      <section class="stage-card active" id="stage-intro">
+        <div class="intro-grid">
+          <div class="intro-content">
+            <div class="stage-tag-badge">
+              <svg class="icon icon-sm" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
+              </svg>
+              <span>MODUL PRESENTASI KELOMPOK</span>
+            </div>
+            <h2>Adab Membagikan <span>Video & Foto</span> di Media Sosial</h2>
+            <p class="intro-desc">
+              Sebuah eksplorasi interaktif berbasis syariat Islam untuk membangun kesadaran digital, menjaga kehormatan sesama, menghindari fitnah hoaks, dan menegakkan adab Qurani di era kecerdasan buatan dan jejaring sosial.
+            </p>
+
+            <div class="mission-intel-box">
+              <div class="intel-row">
+                <span class="intel-label">MATA PELAJARAN</span>
+                <span class="intel-val">Pendidikan Agama Islam & Budi Pekerti</span>
+              </div>
+              <div class="intel-row">
+                <span class="intel-label">KELAS & JURUSAN</span>
+                <span class="intel-val">XI RPL 3 (Rekayasa Perangkat Lunak)</span>
+              </div>
+              <div class="intel-row">
+                <span class="intel-label">SEKOLAH</span>
+                <span class="intel-val">SMK Negeri 2 Mojokerto</span>
+              </div>
+              <div class="intel-row">
+                <span class="intel-label">LANDASAN DASAR</span>
+                <span class="intel-val">QS. Al-Hujurat: 6 & 12 | HR. Bukhari-Muslim</span>
+              </div>
+            </div>
+
+            <div class="intro-btn-group">
+              <button class="btn-game-primary" id="btn-start-mission">
+                <span>MULAI PRESENTASI INTERAKTIF</span>
+                <svg class="icon" viewBox="0 0 24 24">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Team Dossier Card -->
+          <div class="team-dossier-card">
+            <div class="dossier-header">
+              <div>
+                <h3>DAFTAR ANGGOTA TIM</h3>
+                <div class="dossier-group-label">KELOMPOK 6</div>
+              </div>
+              <span class="dossier-stamp">XI RPL 3</span>
+            </div>
+            <div class="team-list">
+              <div class="member-item">
+                <div class="member-num-badge">01</div>
+                <div class="member-name-text">Azka Mayyasa Tsurayya Vashty (Absen 06)</div>
+              </div>
+              <div class="member-item">
+                <div class="member-num-badge">02</div>
+                <div class="member-name-text">Rona Qurrotu Aiini (Absen 30)</div>
+              </div>
+              <div class="member-item">
+                <div class="member-num-badge">03</div>
+                <div class="member-name-text">Sinta Ayu Cahyadewi (Absen 33)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STAGE 1: PEMAPARAN MATERI (The Crisis & 5 Pillars)
+           ==================================================================== -->
+      <section class="stage-card" id="stage-materi">
+        <div class="stage-hero">
+          <div>
+            <div class="stage-tag-badge">
+              <svg class="icon icon-sm" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>BAGIAN 1: PEMAPARAN MATERI</span>
+            </div>
+            <h2 class="stage-title">Permasalahan & 5 Pilar Adab Bermedia Sosial</h2>
+            <p class="stage-subtitle">
+              Analisis mendalam bersumber dari makalah ilmiah mengenai fenomena hilangnya batasan etika ketika mengunggah konten foto dan video di era digital.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3 Problem Cards -->
+        <div class="materi-grid">
+          <div class="materi-card">
+            <div class="materi-card-header">
+              <div class="materi-card-icon danger">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <h3 class="materi-card-title">Pelanggaran Privasi & Doxing</h3>
+            </div>
+            <p class="materi-card-desc">
+              Banyak pengguna mengunggah foto atau video orang lain tanpa meminta izin terlebih dahulu. Hal ini mencederai hak privasi, memicu ketidaknyamanan, dan dalam taraf ekstrem memicu perundungan siber (cyberbullying).
+            </p>
+            <div class="materi-card-tags">
+              <span class="pill-tag">HAK PRIVASI</span>
+              <span class="pill-tag">TANPA IZIN</span>
+              <span class="pill-tag">CYBERBULLYING</span>
+            </div>
+          </div>
+
+          <div class="materi-card">
+            <div class="materi-card-header">
+              <div class="materi-card-icon danger">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </div>
+              <h3 class="materi-card-title">Penyebaran Aib & Konten Memalukan</h3>
+            </div>
+            <p class="materi-card-desc">
+              Fenomena membuat rekaman video candid yang memperlihatkan kelemahan, kebodohan, atau aib seseorang demi mengejar viralitas dan tawa instan. Hal ini meruntuhkan martabat dan kehormatan seorang muslim di ruang publik.
+            </p>
+            <div class="materi-card-tags">
+              <span class="pill-tag">TAJASSUS</span>
+              <span class="pill-tag">MEMALUKAN</span>
+              <span class="pill-tag">RUSAK NAMA BAIK</span>
+            </div>
+          </div>
+
+          <div class="materi-card">
+            <div class="materi-card-header">
+              <div class="materi-card-icon danger">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <h3 class="materi-card-title">Wabah Hoaks & Krisis Tabayyun</h3>
+            </div>
+            <p class="materi-card-desc">
+              Kebiasaan membagikan ulang (share/retweet) video atau potongan narasi tanpa memverifikasi sumber dan fakta sebenarnya. Akibatnya timbul fitnah besar, kepanikan sosial, dan permusuhan antarsesama warga.
+            </p>
+            <div class="materi-card-tags">
+              <span class="pill-tag">HOAKS</span>
+              <span class="pill-tag">FITNAH</span>
+              <span class="pill-tag">KEGADUHAN SOSIAL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Pillars Flow -->
+        <div class="pillars-container">
+          <div class="pillars-title">
+            <svg class="icon" viewBox="0 0 24 24" style="color: var(--islamic-emerald)">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>5 PILAR UTAMA ADAB BERMEDIA SOSIAL SESUAI MAKALAH</span>
+          </div>
+          <div class="pillars-flex">
+            <div class="pillar-col">
+              <div class="pillar-num">1</div>
+              <div class="pillar-head">Meminta Izin</div>
+              <div class="pillar-sub">Menghormati privasi dan meminta kerelaan pemilik foto sebelum diunggah ke publik.</div>
+            </div>
+            <div class="pillar-col">
+              <div class="pillar-num">2</div>
+              <div class="pillar-head">Validasi / Tabayyun</div>
+              <div class="pillar-sub">Memeriksa kebenaran berita sebelum menekan tombol share agar tidak menyebar kebohongan.</div>
+            </div>
+            <div class="pillar-col">
+              <div class="pillar-num">3</div>
+              <div class="pillar-head">Menutup Aib</div>
+              <div class="pillar-sub">Menyembunyikan kekurangan sesama dan menahan diri dari membagikan video yang mempermalukan.</div>
+            </div>
+            <div class="pillar-col">
+              <div class="pillar-num">4</div>
+              <div class="pillar-head">Hindari Mungkar</div>
+              <div class="pillar-sub">Bebas dari unsur pornografi, aurat terbuka, kekerasan, penghinaan, dan ujaran kebencian.</div>
+            </div>
+            <div class="pillar-col">
+              <div class="pillar-num">5</div>
+              <div class="pillar-head">Timbang Maslahat</div>
+              <div class="pillar-sub">Memikirkan dampak jangka panjang: Apakah membawa pahala atau justru dosa jariyah?</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STAGE 2: DALIL NAQLI & INTEGRATED MUROTTAL PLAYER
+           ==================================================================== -->
+      <section class="stage-card" id="stage-dalil">
+        <div class="stage-hero">
+          <div>
+            <div class="stage-tag-badge">
+              <svg class="icon icon-sm" viewBox="0 0 24 24">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>BAGIAN 2: DALIL AL-QURAN & HADITS</span>
+            </div>
+            <h2 class="stage-title">Dalil Naqli Al-Qur'an & Pemutar Murottal Resmi</h2>
+            <p class="stage-subtitle">
+              Landasan syariat Islam yang mengikat setiap muslim dalam membagikan informasi. Dilengkapi audio murottal berkualitas tinggi yang dapat diputar, di-pause, dan diunduh langsung.
+            </p>
+          </div>
+        </div>
+
+        <div class="dalil-deck-container">
+          <!-- Dalil 1: QS. Al-Hujurat Ayat 6 -->
+          <div class="dalil-card">
+            <div class="dalil-badge-row">
+              <span class="dalil-ref-badge">QS. AL-HUJURAT: 6</span>
+              <span class="dalil-theme-badge">PERINTAH TABAYYUN & ANTI-HOAKS</span>
+            </div>
+
+            <div class="arabic-text">
+              يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا بِجَهَـٰلَةٍ فَتُصْبِحُوا۟ عَلَىٰ مَا فَعَلْتُمْ نَـٰدِمِينَ ٦
+            </div>
+
+            <div class="translation-box">
+              <div class="translation-title">TERJEMAHAN RESMI KEMENAG RI:</div>
+              <div class="translation-content">
+                “Wahai orang-orang yang beriman! Jika seorang yang fasik datang kepadamu membawa suatu berita, maka telitilah kebenarannya, agar kamu tidak mencelakakan suatu kaum karena kebodohan (kecerobohan), yang akhirnya kamu menyesali perbuatanmu itu.”
+              </div>
+            </div>
+
+            <div class="tafsir-callout">
+              <strong>Korelasi dengan Media Sosial:</strong> Ayat ini menjadi protokol keamanan informasi pertama bagi umat Islam. Kita dilarang menelan mentah-mentah atau langsung meneruskan (forward) video, foto, dan berita dari sumber yang tidak jelas kredibilitasnya sebelum diverifikasi secara ilmiah.
+            </div>
+
+            <!-- Audio Player 1: Al-Hujurat Ayat 6 -->
+            <div class="audio-player-unit">
+              <div class="audio-controls-left">
+                <button class="btn-play-pause" id="btn-play-6" title="Putar Audio QS. Al-Hujurat 6">
+                  <svg class="icon" viewBox="0 0 24 24">
+                    <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon>
+                  </svg>
+                </button>
+                <div class="audio-meta-info">
+                  <span class="audio-title">Murottal QS. Al-Hujurat: 6</span>
+                  <span class="audio-time-stamp" id="time-6">00:00 / 00:00</span>
+                </div>
+              </div>
+
+              <div class="audio-scrubber-group">
+                <input type="range" class="audio-slider" id="slider-6" min="0" max="100" value="0">
+              </div>
+
+              <div class="audio-actions-right">
+                <a href="./Al-Hujurat ayat 6.mp3" download="QS_Al_Hujurat_Ayat_6.mp3" class="btn-download-audio" title="Unduh File MP3">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>UNDUH AUDIO</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dalil 2: QS. Al-Hujurat Ayat 12 -->
+          <div class="dalil-card">
+            <div class="dalil-badge-row">
+              <span class="dalil-ref-badge">QS. AL-HUJURAT: 12</span>
+              <span class="dalil-theme-badge">LARANGAN GHIBAH, TAJASSUS & SUUDZAN</span>
+            </div>
+
+            <div class="arabic-text">
+              يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱجْتَنِبُوا۟ كَثِيرًا مِّنَ ٱلظَّنِّ إِنَّ بَعْضَ ٱلظَّنِّ إِثْمٌ ۖ وَلَا تَجَسَّسُوا۟ وَلَا يَغْتَب بَّعْضُكُم بَعْضًا ۚ أَيُحِبُّ أَحَدُكُمْ أَن يَأْكُلَ لَحْمَ أَخِيهِ مَيْتًا فَكَرِهْتُمُوهُ ۚ وَٱتَّقُوا۟ ٱللَّهَ ۚ إِنَّ ٱللَّهَ تَوَّابٌ رَّحِيمٌ ١٢
+            </div>
+
+            <div class="translation-box">
+              <div class="translation-title">TERJEMAHAN RESMI KEMENAG RI:</div>
+              <div class="translation-content">
+                “Wahai orang-orang yang beriman! Jauhilah banyak dari prasangka, sesungguhnya sebagian prasangka itu dosa, dan janganlah kamu mencari-cari kesalahan orang lain, dan janganlah ada di antara kamu yang menggunjing sebagian yang lain. Apakah ada di antara kamu yang suka memakan daging saudaranya yang sudah mati? Tentu kamu merasa jijik. Dan bertakwalah kepada Allah, sungguh Allah Maha Penerima tobat, Maha Penyayang.”
+              </div>
+            </div>
+
+            <div class="tafsir-callout">
+              <strong>Korelasi dengan Media Sosial:</strong> Membagikan video atau foto yang mengumbar aib pribadi orang lain (doxing, rekaman aib) disetarakan oleh Allah dengan perbuatan memakan bangkai saudara sendiri. Umat Islam diwajibkan menutup aib saudaranya agar aibnya ditutup di akhirat.
+            </div>
+
+            <!-- Audio Player 2: Al-Hujurat Ayat 12 -->
+            <div class="audio-player-unit">
+              <div class="audio-controls-left">
+                <button class="btn-play-pause" id="btn-play-12" title="Putar Audio QS. Al-Hujurat 12">
+                  <svg class="icon" viewBox="0 0 24 24">
+                    <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon>
+                  </svg>
+                </button>
+                <div class="audio-meta-info">
+                  <span class="audio-title">Murottal QS. Al-Hujurat: 12</span>
+                  <span class="audio-time-stamp" id="time-12">00:00 / 00:00</span>
+                </div>
+              </div>
+
+              <div class="audio-scrubber-group">
+                <input type="range" class="audio-slider" id="slider-12" min="0" max="100" value="0">
+              </div>
+
+              <div class="audio-actions-right">
+                <a href="./Al-Hujurat ayat 12.mp3" download="QS_Al_Hujurat_Ayat_12.mp3" class="btn-download-audio" title="Unduh File MP3">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>UNDUH AUDIO</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dalil 3: Hadits Shahih -->
+          <div class="dalil-card">
+            <div class="dalil-badge-row">
+              <span class="dalil-ref-badge">HR. BUKHARI & MUSLIM</span>
+              <span class="dalil-theme-badge">PRINSIP BERKATA BAIK ATAU DIAM</span>
+            </div>
+
+            <div class="arabic-text">
+              مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ
+            </div>
+
+            <div class="translation-box">
+              <div class="translation-title">SABDA RASULULLAH SAW:</div>
+              <div class="translation-content">
+                “Barang siapa beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam.”
+              </div>
+            </div>
+
+            <div class="tafsir-callout">
+              <strong>Kaidah di Era Media Sosial:</strong> Dalam konteks digital, hadits ini diterjemahkan menjadi: <em>"Posting hal yang bermanfaat atau jangan posting sama sekali."</em> Jemari dan lisan kita di media sosial akan dimintai pertanggungjawaban di hadapan Allah Swt.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STAGE 3: LAB SIMULATOR VIDEO INTERAKTIF (3 KASUS VIRAL NYATA)
+           ==================================================================== -->
+      <section class="stage-card" id="stage-simulator">
+        <div class="stage-hero">
+          <div>
+            <div class="stage-tag-badge">
+              <svg class="icon icon-sm" viewBox="0 0 24 24">
+                <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon>
+              </svg>
+              <span>BAGIAN 3: DEMONSTRASI RESPON KONTEN</span>
+            </div>
+            <h2 class="stage-title">Lab Simulator Video: 3 Tanggapan Kasus Medsos</h2>
+            <p class="stage-subtitle">
+              Saksikan video kasus viral nyata, perbesar atau perkecil tampilan saat presentasi, dan ajak audiens menentukan sikap adab Islam yang paling tepat.
+            </p>
+          </div>
+        </div>
+
+        <!-- Video Case Switcher Tabs -->
+        <div class="video-cases-tabs" id="video-cases-tabs">
+          <button class="btn-video-tab active" data-video-index="0">
+            <svg class="icon icon-sm" viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span>KASUS 1: PAMER SEDEKAH (FLEXING)</span>
+          </button>
+          <button class="btn-video-tab" data-video-index="1">
+            <svg class="icon icon-sm" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>KASUS 2: SERUAN DAKWAH TAUBAT</span>
+          </button>
+          <button class="btn-video-tab" data-video-index="2">
+            <svg class="icon icon-sm" viewBox="0 0 24 24">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <span>KASUS 3: SEBAR VIDEO SYUR MANTAN</span>
+          </button>
+        </div>
+
+        <div class="video-lab-grid" id="video-lab-grid">
+          <!-- Left: Video Player Card with Zoom Toolbar -->
+          <div class="video-player-card">
+            <div class="video-wrapper" id="video-wrapper">
+              <video id="lab-main-video" class="video-element" controls preload="metadata" src="./WhatsApp Video 2026-10-27 at 09.38.39.mp4">
+                Browser Anda tidak mendukung tag video HTML5.
+              </video>
+            </div>
+
+            <!-- Video Toolbar & Interactive Zoom Controls -->
+            <div class="video-toolbar">
+              <div class="video-meta-badge">
+                <span class="video-pulse-dot"></span>
+                <span id="video-meta-title">MEMUTAR: KASUS 1 - PAMER SEDEKAH</span>
+              </div>
+
+              <div class="video-zoom-btn-group">
+                <button class="btn-video-control" id="btn-video-zoom-in" title="Perbesar Layar Video (Mode Bioskop)">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>PERBESAR LAYAR</span>
+                </button>
+
+                <button class="btn-video-control" id="btn-video-zoom-out" title="Perkecil Layar Video (Mode Normal)">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                  <span>PERKECIL</span>
+                </button>
+
+                <button class="btn-video-control" id="btn-video-fullscreen" title="Layar Penuh Video">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                  <span>FULLSCREEN</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Video Response / Decision Terminal -->
+          <div class="video-decision-terminal">
+            <div class="terminal-header">
+              <span class="terminal-title">TERMINAL SIKAP & HUKUM ISLAM</span>
+              <span class="quiz-score-pill" id="sim-barakah-points">100 Barakah</span>
+            </div>
+
+            <!-- Case Info Box -->
+            <div class="video-case-info-box">
+              <span class="video-case-badge danger" id="video-case-badge">STUDI KASUS RIYA & FLEXING</span>
+              <h3 class="video-case-title" id="video-case-title">Pamer Uang Sedekah Segepok di Media Sosial</h3>
+              <p class="video-case-desc" id="video-case-desc">
+                Video menampilkan tumpukan uang pecahan rupiah dalam jumlah besar yang dipamerkan ke depan kamera dengan narasi konten sedekah.
+              </p>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+                PERTANYAAN: APAKAH KONTEN INI BOLEH DISEBARKAN & BAGAIMANA ADAB MENANGGAPINYA?
+              </span>
+            </div>
+
+            <!-- Action Response Options -->
+            <div class="video-options-container" id="video-options-container"></div>
+
+            <!-- Feedback & Islamic Law Verdict -->
+            <div class="video-feedback-card" id="video-feedback-card"></div>
+
+            <div style="margin-top: auto; padding-top: 14px; display: flex; justify-content: flex-end;">
+              <button class="hud-btn" id="btn-video-next-case">
+                <span>LANJUT KE KASUS BERIKUTNYA</span>
+                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STAGE 4: KAJIAN STUDI KASUS VIRAL
+           ==================================================================== -->
+      <section class="stage-card" id="stage-kasus">
+        <div class="stage-hero">
+          <div>
+            <div class="stage-tag-badge">
+              <svg class="icon icon-sm" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>BAGIAN 4: ANALISIS STUDI KASUS</span>
+            </div>
+            <h2 class="stage-title">Analisis Kasus Viral & Tinjauan Fiqih Digital</h2>
+            <p class="stage-subtitle">
+              Pembedahan kasus nyata yang sering terjadi di media sosial beserta dampak moral dan tinjauan hukum Islam berdasarkan Al-Qur'an dan Sunnah.
+            </p>
+          </div>
+        </div>
+
+        <div class="case-study-nav" id="case-nav-list"></div>
+
+        <div class="case-detail-container">
+          <div class="case-grid-two-col">
+            <!-- Left Column: Case Narrative & Impact -->
+            <div>
+              <h3 class="materi-card-title" id="case-detail-title" style="margin-bottom: 12px; font-size: 19px;">
+                KASUS 01: Spill Aib Teman & Doxing Medsos
+              </h3>
+              <div class="case-card-panel" style="margin-bottom: 16px;">
+                <div class="case-panel-title">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 14 14"></polyline>
+                  </svg>
+                  <span>KRONOLOGI & DESKRIPSI KASUS:</span>
+                </div>
+                <p class="case-text-block" id="case-detail-summary">
+                  Seorang siswa merekam pertengkaran teman sekelasnya lalu mengunggah potongan video 15 detik ke media sosial dengan narasi menyudutkan hingga video ditonton ratusan ribu kali.
+                </p>
+              </div>
+
+              <div class="case-card-panel">
+                <div class="case-panel-title">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--danger)">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <span>DAMPAK SOSIAL & PSIKOLOGIS:</span>
+                </div>
+                <div class="case-impact-list" id="case-impact-list"></div>
+              </div>
+            </div>
+
+            <!-- Right Column: Islamic Legal Verdict & Solution -->
+            <div>
+              <div class="case-card-panel" style="margin-bottom: 16px;">
+                <div class="case-panel-title">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" style="color: var(--islamic-emerald)">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                  <span>TINJAUAN HUKUM ISLAM & AYAT TERKAIT:</span>
+                </div>
+                <div class="legal-verdict-box" id="case-islamic-law-box">
+                  <div class="verdict-header">STATUS HUKUM:</div>
+                  <div class="verdict-body" id="case-islamic-law">
+                    HARAM MUTLAK. Mengunggah aib sesama merupakan dosa ghibah dan tajassus yang diharamkan Allah dalam QS. Al-Hujurat: 12. Menggunjing sesama diumpamakan seperti memakan bangkai saudaranya sendiri yang sudah mati.
+                  </div>
+                </div>
+              </div>
+
+              <div class="case-card-panel">
+                <div class="case-panel-title">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>SOLUSI QURANI & AKHLAKUL KARIMAH:</span>
+                </div>
+                <p class="case-text-block" id="case-solusi" style="font-weight: 600; color: var(--islamic-emerald);">
+                  Memohon maaf langsung kepada korban, segera menghapus konten (takedown), dan mengamalkan prinsip Sitrul Aurah (menutup celah aib sesama).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STAGE 5: SESI TANYA JAWAB & KUIS INTERAKTIF
+           ==================================================================== -->
+      <section class="stage-card" id="stage-kuis">
+        <div class="stage-hero">
+          <div>
+            <div class="stage-tag-badge">
+              <svg class="icon icon-sm" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>BAGIAN 5: SESI TANYA JAWAB & EVALUASI</span>
+            </div>
+            <h2 class="stage-title">Arena Kuis Interaktif & Penilaian Otomatis</h2>
+            <p class="stage-subtitle">
+              Sesi uji pemahaman bagi responden/audiens kelas dengan skor instan, analisis dalil, dan sertifikasi hasil belajar.
+            </p>
+          </div>
+        </div>
+
+        <div class="quiz-arena">
+          <div class="quiz-header-status">
+            <span class="pill-tag" id="quiz-q-counter">SOAL 1 DARI 6</span>
+            <span class="quiz-score-pill" id="quiz-score-val">SKOR: 0</span>
+          </div>
+
+          <!-- Active Question Card -->
+          <div class="quiz-question-box" id="quiz-question-box">
+            <h3 class="quiz-question-title" id="quiz-question-title">
+              Pertanyaan kuis sedang dimuat...
+            </h3>
+
+            <div class="quiz-options-grid" id="quiz-options-grid"></div>
+
+            <div class="quiz-explanation-card" id="quiz-explanation-card"></div>
+
+            <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+              <button class="btn-game-primary" id="btn-quiz-next" style="display: none;">
+                <span>SOAL BERIKUTNYA</span>
+                <svg class="icon" viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Final Report Card -->
+          <div class="quiz-result-view" id="quiz-result-view">
+            <div class="result-badge-circle" id="quiz-result-badge">100</div>
+            <h3 class="result-verdict" id="quiz-result-verdict">MUTTAQIN DIGITAL</h3>
+            <p class="result-desc" id="quiz-result-desc">
+              MasyaAllah! Anda memahami seluruh dalil QS. Al-Hujurat 6 & 12 serta adab syariat dalam bermedia sosial dengan sangat sempurna.
+            </p>
+
+            <div class="result-actions">
+              <button class="btn-game-secondary" id="btn-quiz-restart">
+                <svg class="icon icon-sm" viewBox="0 0 24 24">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                <span>ULANGI KUIS</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STAGE 6: REFLEKSI DIRI, KESIMPULAN MAKALAH & DOA PENUTUP
+           ==================================================================== -->
+      <section class="stage-card" id="stage-refleksi">
+        <div class="stage-hero">
+          <div>
+            <div class="stage-tag-badge">
+              <svg class="icon icon-sm" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+              <span>BAGIAN 6: REFLEKSI & KESIMPULAN</span>
+            </div>
+            <h2 class="stage-title">Refleksi Muhasabah, Kesimpulan Makalah & Doa</h2>
+            <p class="stage-subtitle">
+              Meneguhkan kesadaran diri dan mengamalkan adab membagikan foto serta video di media sosial demi menjaga kehormatan, privasi, dan ukhuwah islamiyah.
+            </p>
+          </div>
+        </div>
+
+        <div class="reflection-grid">
+          <!-- Left: 4 Self-Reflection Checkpoints -->
+          <div class="reflection-panel">
+            <h3 class="materi-card-title" style="margin-bottom: 16px; font-size: 18px;">4 Pertanyaan Muhasabah Sebelum Klik Share</h3>
+
+            <div class="reflection-card-step">
+              <div class="reflection-step-num">1</div>
+              <div class="reflection-step-content">
+                <h4>Niat Hati (Al-Qashdu)</h4>
+                <p>Apakah aku mengunggah ini untuk mencari keridhaan Allah, atau demi mengejar pujian manusia, flexing uang, dan riya'?</p>
+              </div>
+            </div>
+
+            <div class="reflection-card-step">
+              <div class="reflection-step-num">2</div>
+              <div class="reflection-step-content">
+                <h4>Kebenaran Fakta (Tabayyun - QS. 49:6)</h4>
+                <p>Apakah konten ini 100% fakta terverifikasi dan dari sumber yang terpercaya, atau mengandung unsur hoaks dan fitnah?</p>
+              </div>
+            </div>
+
+            <div class="reflection-card-step">
+              <div class="reflection-step-num">3</div>
+              <div class="reflection-step-content">
+                <h4>Kemaslahatan Umat (Al-Maslahah)</h4>
+                <p>Apakah video/foto ini membawa manfaat nyata bagi orang lain, atau justru menimbulkan kegaduhan, syahwat, dan permusuhan?</p>
+              </div>
+            </div>
+
+            <div class="reflection-card-step">
+              <div class="reflection-step-num">4</div>
+              <div class="reflection-step-content">
+                <h4>Perlindungan Aib Sesama (Sitrul Aib - QS. 49:12)</h4>
+                <p>Apakah ada hak privasi orang lain yang dilanggar, atau aib saudara seiman yang dipermalukan demi mengejar viralitas?</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Kesimpulan Pokok Makalah Ilmiah -->
+          <div class="reflection-panel">
+            <h3 class="materi-card-title" style="margin-bottom: 16px; font-size: 18px;">Kesimpulan Pokok Makalah PAI</h3>
+
+            <div class="kesimpulan-list">
+              <div class="kesimpulan-item">
+                <div class="kesimpulan-icon-badge">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>1. Menghormati Privasi & Izin:</strong> Meminta izin sebelum membagikan foto atau video orang lain demi menjaga kenyamanan dan martabat saudara sesama muslim.
+                </div>
+              </div>
+
+              <div class="kesimpulan-item">
+                <div class="kesimpulan-icon-badge">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>2. Kewajiban Tabayyun:</strong> Memastikan kebenaran informasi sebelum membagikan konten agar tidak menyebarkan fitnah dan berita bohong (QS. Al-Hujurat: 6).
+                </div>
+              </div>
+
+              <div class="kesimpulan-item">
+                <div class="kesimpulan-icon-badge">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>3. Menutup Aib Sesama:</strong> Menahan diri dari membagikan video yang mempermalukan orang lain dan menghentikan peredaran ghibah digital (QS. Al-Hujurat: 12).
+                </div>
+              </div>
+
+              <div class="kesimpulan-item">
+                <div class="kesimpulan-icon-badge">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>4. Menjauhi Kemungkaran:</strong> Memilih konten yang bersih dari pornografi, aurat terbuka, kekerasan, penghinaan, dan sifat riya'.
+                </div>
+              </div>
+
+              <div class="kesimpulan-item">
+                <div class="kesimpulan-icon-badge">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <strong>5. Berkata Baik atau Diam:</strong> Menjadikan media sosial sebagai sarana dakwah, silaturahmi, dan penyebar kebaikan sesuai hadits HR. Bukhari & Muslim.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Full Width: Doa Perlindungan Lisan & Jemari -->
+        <div class="doa-full-banner">
+          <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 800; color: var(--islamic-emerald); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">
+            DOA PERLINDUNGAN LISAN & JEMARI DARI MAKSIAT DIGITAL:
+          </div>
+          <div class="doa-arabic-large">
+            اللَّهُمَّ حَصِّنْ فَرْجِي وَيَسِّرْ لِي أَمْرِي وَطَهِّرْ قَلْبِي وَاحْفَظْ لِسَانِي وَبَصَرِي
+          </div>
+          <div class="doa-latin">
+            "Allahumma hash-shin farji, wa yassir li amri, wa thahhir qalbi, wah-fazh lisani wa bashari."
+          </div>
+          <div class="doa-meaning-large">
+            "Ya Allah, peliharalah kehormatanku, mudahkanlah urusanku, sucikanlah hatiku, serta jagalah lisan, jemari, dan pandanganku dari segala bentuk maksiat digital."
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ======================================================================
+         BOTTOM GAME CONTROLLER CONSOLE (Dock Navigation)
+         ====================================================================== -->
+    <footer class="game-controller-dock">
+      <!-- D-Pad Step Buttons -->
+      <div class="dpad-controls">
+        <button class="btn-dpad" id="btn-prev-stage" disabled>
+          <svg class="icon icon-sm" viewBox="0 0 24 24">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>SEBELUMNYA</span>
+        </button>
+
+        <button class="btn-dpad" id="btn-next-stage">
+          <span>LANJUTKAN</span>
+          <svg class="icon icon-sm" viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Quick Stage Slot Strip -->
+      <div class="stage-selector-strip" id="stage-selector-strip"></div>
+
+      <!-- Keyboard Hotkey Guide -->
+      <div class="controller-hotkeys-hint">
+        <span class="kbd-badge">PANAH KIRI/A</span>
+        <span class="kbd-badge">PANAH KANAN/D</span>
+        <span class="kbd-badge">ANGKA 1-7</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Main Game App Engine Script -->
+  <script src="./app.js"></script>
+</body>
+</html>

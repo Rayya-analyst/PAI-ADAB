@@ -1,0 +1,1897 @@
+/* ==========================================================================
+   ADAB SIBER: ISLAMIC DIGITAL ADAB PROTOCOL
+   Aesthetic: Neo-Brutalist Modern Islamic Engine
+   Zero Emoji Policy - Pure SVG & Vector UI
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg-primary: #F5F3EF;
+  --bg-surface: #FFFFFF;
+  --bg-surface-alt: #EBE7DF;
+  --text-main: #121614;
+  --text-muted: #525E56;
+  --text-dim: #7A887F;
+  
+  --islamic-emerald: #0A5C36;
+  --islamic-mint: #00E575;
+  --islamic-mint-hover: #00C864;
+  --islamic-mint-soft: rgba(0, 229, 117, 0.15);
+  --islamic-gold: #D4AF37;
+  --islamic-gold-soft: rgba(212, 175, 55, 0.15);
+  
+  --danger: #E63946;
+  --danger-soft: rgba(230, 57, 70, 0.12);
+  --warning: #F4A261;
+  --info: #2A9D8F;
+  
+  --border-thick: 2px solid #121614;
+  --border-heavy: 3px solid #121614;
+  --shadow-brutal: 4px 4px 0px #121614;
+  --shadow-brutal-sm: 2px 2px 0px #121614;
+  --shadow-brutal-lg: 6px 6px 0px #121614;
+  --shadow-brutal-hover: 1px 1px 0px #121614;
+  
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic: 'Amiri', serif;
+  --font-mono: 'Space Mono', monospace;
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Islamic Geometric Background Pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: radial-gradient(var(--text-main) 1px, transparent 1px),
+                    radial-gradient(var(--islamic-emerald) 1px, var(--bg-primary) 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+/* App Shell Game Layout - Full Screen Fluid Width */
+#app-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 16px 32px;
+}
+
+/* ==========================================================================
+   TOP GAME HUD (Status Bar)
+   ========================================================================== */
+.game-hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-surface);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  margin-bottom: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.hud-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--islamic-emerald);
+  color: #FFF;
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hud-agent-info h1 {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.hud-agent-info p {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.hud-quest-tracker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-surface-alt);
+  padding: 6px 14px;
+  border: var(--border-thick);
+  border-radius: var(--radius-pill);
+}
+
+.tracker-title {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tracker-meter {
+  width: 100px;
+  height: 10px;
+  background: #FFF;
+  border: var(--border-thick);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.tracker-bar {
+  height: 100%;
+  width: 16.6%;
+  background: var(--islamic-mint);
+  transition: width 0.3s ease;
+}
+
+.tracker-val {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.hud-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* HUD Interactive Buttons */
+.hud-btn {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.hud-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #121614;
+  background: var(--islamic-mint-soft);
+}
+
+.hud-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.hud-btn.active {
+  background: var(--islamic-mint);
+}
+
+/* ==========================================================================
+   PERSISTENT AUDIO DOCK (Global Header)
+   ========================================================================== */
+.global-audio-dock {
+  background: #FFF;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.audio-dock-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.audio-pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #BBB;
+  border: 1px solid #121614;
+}
+
+.audio-pulse-indicator.playing {
+  background: var(--islamic-mint);
+  box-shadow: 0 0 8px var(--islamic-mint);
+  animation: pulse-ring 1.5s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.7; }
+  100% { transform: scale(0.95); opacity: 1; }
+}
+
+.audio-dock-text {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   MAIN GAME STAGE VIEWPORT
+   ========================================================================== */
+.game-viewport {
+  flex: 1;
+  position: relative;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stage-card {
+  display: none;
+  background: var(--bg-surface);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal-lg);
+  border-radius: var(--radius-lg);
+  padding: 36px 42px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex: 1;
+  width: 100%;
+}
+
+.stage-card.active {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+}
+
+/* Stage Header Banner */
+.stage-hero {
+  margin-bottom: 28px;
+  border-bottom: 2px dashed #CBD5E1;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.stage-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-main);
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+}
+
+.stage-title {
+  font-size: clamp(30px, 2.6vw, 40px);
+  font-weight: 900;
+  line-height: 1.22;
+  color: var(--text-main);
+}
+
+.stage-subtitle {
+  font-size: 17.5px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.6;
+  max-width: 1100px;
+}
+
+/* ==========================================================================
+   STAGE 0: MISSION INTRO & TEAM ROSTER
+   ========================================================================== */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: stretch;
+  margin: 0;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.intro-content h2 {
+  font-size: clamp(36px, 3.2vw, 48px);
+  font-weight: 900;
+  line-height: 1.18;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.intro-content h2 span {
+  background: var(--islamic-mint);
+  padding: 2px 10px;
+  border: var(--border-thick);
+  border-radius: var(--radius-sm);
+}
+
+.intro-desc {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+.mission-intel-box {
+  background: var(--bg-surface-alt);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-md);
+  padding: 22px 26px;
+  margin-bottom: 28px;
+}
+
+.intel-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  padding: 10px 0;
+  border-bottom: 1.5px dashed #CBD5E1;
+}
+
+.intel-row:last-child {
+  border-bottom: none;
+}
+
+.intel-label {
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.intel-val {
+  font-weight: 800;
+  color: var(--text-main);
+  font-size: 15px;
+}
+
+.intro-btn-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-game-primary {
+  background: var(--islamic-mint);
+  border: var(--border-heavy);
+  box-shadow: 4px 4px 0px #121614;
+  color: var(--text-main);
+  font-size: 16.5px;
+  font-weight: 800;
+  padding: 18px 36px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-game-primary:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #121614;
+  background: #00FF83;
+}
+
+.btn-game-secondary {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-game-secondary:hover {
+  background: var(--bg-surface-alt);
+  transform: translate(1px, 1px);
+}
+
+/* Team Card */
+.team-dossier-card {
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dossier-header {
+  border-bottom: 3px solid #121614;
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dossier-header h3 {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.dossier-group-label {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--islamic-emerald);
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+.dossier-stamp {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--islamic-emerald);
+  border: 2px solid var(--islamic-emerald);
+  padding: 4px 10px;
+  border-radius: 6px;
+  transform: rotate(-3deg);
+}
+
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #FAF8F5;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.member-item:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #121614;
+  background: var(--islamic-mint-soft);
+}
+
+.member-num-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--islamic-emerald);
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #121614;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0px #121614;
+}
+
+.member-name-text {
+  font-size: 17.5px;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   STAGE 1: PEMAPARAN MATERI (The Crisis & 5 Pillars)
+   ========================================================================== */
+.materi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 26px;
+  margin-bottom: 28px;
+}
+
+.materi-card {
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-md);
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast);
+}
+
+.materi-card:hover {
+  transform: translateY(-2px);
+}
+
+.materi-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.materi-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  border: var(--border-thick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.materi-card-icon.danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.materi-card-icon.emerald {
+  background: var(--islamic-mint-soft);
+  color: var(--islamic-emerald);
+}
+
+.materi-card-icon.gold {
+  background: var(--islamic-gold-soft);
+  color: #B58D14;
+}
+
+.materi-card-title {
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.materi-card-desc {
+  font-size: 15.5px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.materi-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.pill-tag {
+  font-size: 11.5px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 5px 12px;
+  border: 1.5px solid #121614;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-alt);
+}
+
+/* 5 Pillars Horizontal Flow */
+.pillars-container {
+  background: var(--bg-surface-alt);
+  border: var(--border-heavy);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-top: 14px;
+}
+
+.pillars-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pillars-flex {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.pillar-col {
+  background: #FFF;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-md);
+  padding: 20px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+
+.pillar-col:hover {
+  transform: translateY(-2px);
+}
+
+.pillar-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--islamic-emerald);
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border: 2px solid #121614;
+}
+
+.pillar-head {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.pillar-sub {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   STAGE 2: DALIL NAQLI & INTEGRATED MUROTTAL PLAYER
+   ========================================================================== */
+.dalil-deck-container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.dalil-card {
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-lg);
+  padding: 32px 34px;
+}
+
+.dalil-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1.5px dashed #CBD5E1;
+  padding-bottom: 14px;
+}
+
+.dalil-ref-badge {
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  font-weight: 800;
+  background: var(--islamic-emerald);
+  color: #FFF;
+  padding: 6px 16px;
+  border: var(--border-thick);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.dalil-theme-badge {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-surface-alt);
+  padding: 6px 14px;
+  border: 1.5px solid #121614;
+  border-radius: var(--radius-sm);
+}
+
+.arabic-text {
+  font-family: var(--font-arabic);
+  font-size: clamp(26px, 2.3vw, 32px);
+  line-height: 2.35;
+  direction: rtl;
+  text-align: right;
+  color: var(--text-main);
+  background: #FAF8F5;
+  border: var(--border-thick);
+  border-right: 8px solid var(--islamic-emerald);
+  border-radius: var(--radius-md);
+  padding: 26px 30px;
+  margin-bottom: 22px;
+}
+
+.translation-box {
+  margin-bottom: 20px;
+}
+
+.translation-title {
+  font-size: 13.5px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.translation-content {
+  font-size: 16.5px;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.tafsir-callout {
+  background: var(--islamic-mint-soft);
+  border-left: 6px solid var(--islamic-emerald);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-main);
+  margin-bottom: 24px;
+}
+
+/* Islamic Audio Player Widget */
+.audio-player-unit {
+  background: var(--bg-surface-alt);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.audio-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-play-pause {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--islamic-mint);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-main);
+}
+
+.btn-play-pause:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #121614;
+  background: #00FF83;
+}
+
+.audio-meta-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.audio-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.audio-time-stamp {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.audio-scrubber-group {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audio-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #FFF;
+  border: 1.5px solid #121614;
+  outline: none;
+  cursor: pointer;
+  accent-color: var(--islamic-emerald);
+}
+
+.audio-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-download-audio {
+  background: #FFF;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-download-audio:hover {
+  background: var(--islamic-mint);
+  transform: translate(1px, 1px);
+}
+
+/* ==========================================================================
+   STAGE 3: LAB SIMULATOR VIDEO INTERAKTIF (3 Kasus Medsos & Kontrol Zoom)
+   ========================================================================== */
+.video-lab-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 28px;
+  align-items: start;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-lab-grid.theater-mode {
+  grid-template-columns: 1fr;
+}
+
+/* Video Stage Switcher Tabs */
+.video-cases-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.btn-video-tab {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 13.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all var(--transition-fast);
+  color: var(--text-main);
+}
+
+.btn-video-tab:hover {
+  background: var(--bg-surface-alt);
+  transform: translate(1px, 1px);
+}
+
+.btn-video-tab.active {
+  background: var(--islamic-mint);
+  border-color: var(--text-main);
+  box-shadow: var(--shadow-brutal);
+}
+
+/* Video Player Card Container */
+.video-player-card {
+  background: #0E1411;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal-lg);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.video-wrapper.zoomed {
+  height: 720px;
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  display: block;
+}
+
+/* Video Toolbar & Zoom Controls */
+.video-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #17211C;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 12px;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.video-meta-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.video-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 8px var(--danger);
+}
+
+.video-zoom-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-video-control {
+  background: #23312A;
+  color: #FFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-video-control:hover {
+  background: var(--islamic-mint);
+  color: var(--text-main);
+  border-color: var(--islamic-mint);
+  transform: translate(1px, 1px);
+}
+
+.btn-video-control.active {
+  background: var(--islamic-mint);
+  color: var(--text-main);
+}
+
+/* Video Response / Decision Terminal */
+.video-decision-terminal {
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-lg);
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  border-bottom: 2px solid #121614;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.terminal-title {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.video-case-info-box {
+  background: var(--bg-surface-alt);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.video-case-badge {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.video-case-badge.danger {
+  background: #FFE4E6;
+  color: #9F1239;
+  border: 1.5px solid #9F1239;
+}
+
+.video-case-badge.halal {
+  background: #D1FAE5;
+  color: #065F46;
+  border: 1.5px solid #065F46;
+}
+
+.video-case-title {
+  font-size: 17.5px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.video-case-desc {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Action Choices Grid */
+.video-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.btn-response-option {
+  background: #FFF;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: all var(--transition-fast);
+  color: var(--text-main);
+}
+
+.btn-response-option:hover:not(:disabled) {
+  background: var(--bg-surface-alt);
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #121614;
+}
+
+.btn-response-option.chosen-correct {
+  background: #D1FAE5 !important;
+  border-color: #065F46 !important;
+  color: #064E3B !important;
+}
+
+.btn-response-option.chosen-wrong {
+  background: #FFE4E6 !important;
+  border-color: #9F1239 !important;
+  color: #881337 !important;
+}
+
+.response-opt-indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #121614;
+  background: var(--bg-surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Video Analysis Feedback Callout */
+.video-feedback-card {
+  display: none;
+  background: #FAF8F5;
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+  margin-top: 8px;
+}
+
+.video-feedback-card.show {
+  display: block;
+}
+
+.video-feedback-card.correct {
+  border-left: 6px solid var(--islamic-emerald);
+}
+
+.video-feedback-card.wrong {
+  border-left: 6px solid var(--danger);
+}
+
+.feedback-headline {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feedback-details {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.feedback-dalil-quote {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: #FFF;
+  border: 1px dashed #121614;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   STAGE 4: KAJIAN STUDI KASUS VIRAL
+   ========================================================================== */
+.case-study-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.case-nav-btn {
+  background: var(--bg-surface);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 13.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all var(--transition-fast);
+  color: var(--text-main);
+}
+
+.case-nav-btn.active {
+  background: var(--islamic-mint);
+  box-shadow: var(--shadow-brutal);
+}
+
+.case-detail-container {
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.case-grid-two-col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+}
+
+.case-card-panel {
+  background: var(--bg-surface-alt);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 24px 26px;
+}
+
+.case-panel-title {
+  font-size: 15px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.case-text-block {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-main);
+  margin-bottom: 18px;
+}
+
+.case-impact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.impact-item {
+  background: #FFF;
+  border: 1.5px solid #121614;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 14.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legal-verdict-box {
+  background: #FFF;
+  border: var(--border-thick);
+  border-left: 6px solid var(--danger);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  margin-bottom: 18px;
+}
+
+.legal-verdict-box.halal {
+  border-left-color: var(--islamic-emerald);
+}
+
+.verdict-header {
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.verdict-body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   STAGE 5: SESI TANYA JAWAB & KUIS INTERAKTIF
+   ========================================================================== */
+.quiz-arena {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.quiz-header-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-surface-alt);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 16px 24px;
+}
+
+.quiz-score-pill {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 800;
+  background: var(--islamic-mint);
+  border: var(--border-thick);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+}
+
+.quiz-question-box {
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+}
+
+.quiz-question-title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.45;
+  margin-bottom: 26px;
+}
+
+.quiz-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.quiz-opt-btn {
+  background: #FFF;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all var(--transition-fast);
+}
+
+.quiz-opt-btn:hover:not(:disabled) {
+  background: var(--bg-surface-alt);
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #121614;
+}
+
+.quiz-opt-btn.correct {
+  background: #D1FAE5 !important;
+  border-color: #065F46 !important;
+  color: #064E3B !important;
+}
+
+.quiz-opt-btn.wrong {
+  background: #FFE4E6 !important;
+  border-color: #9F1239 !important;
+  color: #881337 !important;
+}
+
+.opt-letter {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg-surface-alt);
+  border: 1.5px solid #121614;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quiz-explanation-card {
+  display: none;
+  background: var(--islamic-mint-soft);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  margin-top: 18px;
+}
+
+.quiz-explanation-card.show {
+  display: block;
+}
+
+.explanation-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.explanation-body {
+  font-size: 15px;
+  color: var(--text-main);
+  line-height: 1.65;
+}
+
+/* Quiz Final Report Card */
+.quiz-result-view {
+  display: none;
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal-lg);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+}
+
+.result-badge-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--islamic-mint);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  margin: 0 auto 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+
+.result-verdict {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.result-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   STAGE 6: REFLEKSI DIRI, KESIMPULAN MAKALAH & DOA PENUTUP
+   ========================================================================== */
+.reflection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 28px;
+}
+
+.reflection-panel {
+  background: #FFF;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-lg);
+  padding: 30px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reflection-card-step {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+  background: var(--bg-surface-alt);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+}
+
+.reflection-step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--islamic-emerald);
+  color: #FFF;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #121614;
+}
+
+.reflection-step-content h4 {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.reflection-step-content p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* Conclusion Makalah List */
+.kesimpulan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kesimpulan-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FAF8F5;
+  border: var(--border-thick);
+  border-left: 6px solid var(--islamic-emerald);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+
+.kesimpulan-icon-badge {
+  background: var(--islamic-mint);
+  border: 1.5px solid #121614;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Doa Full Width Banner */
+.doa-full-banner {
+  background: #FAF8F5;
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  text-align: center;
+}
+
+.doa-arabic-large {
+  font-family: var(--font-arabic);
+  font-size: 30px;
+  direction: rtl;
+  text-align: center;
+  line-height: 2.25;
+  margin-bottom: 14px;
+  color: var(--islamic-emerald);
+}
+
+.doa-latin {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.doa-meaning-large {
+  font-size: 16.5px;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   BOTTOM GAME CONTROLLER CONSOLE (Dock)
+   ========================================================================== */
+.game-controller-dock {
+  background: var(--bg-surface);
+  border: var(--border-heavy);
+  box-shadow: var(--shadow-brutal);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dpad-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-dpad {
+  background: var(--bg-surface-alt);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-sm);
+  border-radius: var(--radius-sm);
+  padding: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-dpad:hover:not(:disabled) {
+  background: var(--islamic-mint);
+  transform: translate(1px, 1px);
+}
+
+.btn-dpad:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.stage-selector-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.btn-stage-slot {
+  background: var(--bg-surface);
+  border: 1.5px solid #121614;
+  border-radius: var(--radius-sm);
+  padding: 7px 13px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  color: var(--text-muted);
+}
+
+.btn-stage-slot:hover {
+  background: var(--bg-surface-alt);
+  color: var(--text-main);
+}
+
+.btn-stage-slot.active {
+  background: var(--islamic-emerald);
+  color: #FFF;
+  border-color: #121614;
+  box-shadow: 2px 2px 0px #121614;
+}
+
+.controller-hotkeys-hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kbd-badge {
+  background: #FFF;
+  border: 1px solid #121614;
+  box-shadow: 1px 1px 0px #121614;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   SVG ICON SYSTEM (Zero Unicode Emoji)
+   ========================================================================== */
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.icon-sm {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2;
+}
+
+.icon-lg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.2;
+}
+
+.icon-xl {
+  width: 36px;
+  height: 36px;
+  stroke-width: 2;
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS & HELPERS
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE OPTIMIZATIONS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+  .lab-split-grid {
+    grid-template-columns: 1fr;
+  }
+  .case-grid-two-col {
+    grid-template-columns: 1fr;
+  }
+  .reflection-grid {
+    grid-template-columns: 1fr;
+  }
+  .pillars-flex {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #app-shell {
+    padding: 8px;
+  }
+  .stage-card {
+    padding: 18px;
+  }
+  .stage-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .game-hud-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hud-quest-tracker {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .pillars-flex {
+    grid-template-columns: 1fr;
+  }
+  .audio-player-unit {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .game-controller-dock {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .stage-selector-strip {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .controller-hotkeys-hint {
+    display: none;
+  }
+}
